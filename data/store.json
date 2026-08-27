@@ -1,0 +1,235 @@
+{
+  "formats": [
+    {
+      "id": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "name": "System Architecture Deep-Dives",
+      "archetype": "breakdown",
+      "description": "Technical thread breakdowns of complex distributed systems with diagrams",
+      "firstObservedAt": 1785267485645,
+      "baselineEngagementRate": 0.052,
+      "postCount": 6,
+      "status": "HEALTHY",
+      "decayRateLambda": 0,
+      "halfLifePostsRemaining": null,
+      "lastEvaluatedAt": 1787859485645
+    },
+    {
+      "id": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "name": "Quick Opinion Hot Takes",
+      "archetype": "opinion",
+      "description": "1-sentence hot takes designed to provoke engagement",
+      "firstObservedAt": 1785699485645,
+      "baselineEngagementRate": 0.065,
+      "postCount": 8,
+      "status": "FATIGUING",
+      "decayRateLambda": 0.16,
+      "halfLifePostsRemaining": 3,
+      "lastEvaluatedAt": 1787859485645
+    },
+    {
+      "id": "fmt-podclips",
+      "creatorId": "jadoncreator",
+      "name": "Podcast Short Clips",
+      "archetype": "curation",
+      "description": "30-second captioned video snippets from guest podcast episodes",
+      "firstObservedAt": 1787254685645,
+      "baselineEngagementRate": 0.041,
+      "postCount": 3,
+      "status": "PROBATION",
+      "decayRateLambda": 0,
+      "halfLifePostsRemaining": null,
+      "lastEvaluatedAt": 1787859485645
+    }
+  ],
+  "posts": [
+    {
+      "id": "p1-1",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "Why Kafka partitions scale",
+      "postedAt": 1785440285645,
+      "impressions": 10000,
+      "engagements": 520,
+      "engagementRate": 0.052
+    },
+    {
+      "id": "p1-2",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "Raft consensus in plain English",
+      "postedAt": 1785785885645,
+      "impressions": 12000,
+      "engagements": 630,
+      "engagementRate": 0.0525
+    },
+    {
+      "id": "p1-3",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "EVM gas optimization tricks",
+      "postedAt": 1786131485645,
+      "impressions": 11000,
+      "engagements": 560,
+      "engagementRate": 0.0509
+    },
+    {
+      "id": "p1-4",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "Vector DB similarity indexing",
+      "postedAt": 1786477085645,
+      "impressions": 15000,
+      "engagements": 780,
+      "engagementRate": 0.052
+    },
+    {
+      "id": "p1-5",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "Distributed locking patterns",
+      "postedAt": 1786822685645,
+      "impressions": 13000,
+      "engagements": 690,
+      "engagementRate": 0.053
+    },
+    {
+      "id": "p1-6",
+      "formatId": "fmt-deepdives",
+      "creatorId": "jadoncreator",
+      "title": "CRDT vs OT real-time sync",
+      "postedAt": 1787513885645,
+      "impressions": 14000,
+      "engagements": 740,
+      "engagementRate": 0.0528
+    },
+    {
+      "id": "p2-1",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Most devtools are glorified wrappers",
+      "postedAt": 1785785885645,
+      "impressions": 20000,
+      "engagements": 1300,
+      "engagementRate": 0.065
+    },
+    {
+      "id": "p2-2",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Stop using Microservices in 2026",
+      "postedAt": 1786045085645,
+      "impressions": 22000,
+      "engagements": 1450,
+      "engagementRate": 0.0659
+    },
+    {
+      "id": "p2-3",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Clean code is a scam",
+      "postedAt": 1786304285645,
+      "impressions": 19000,
+      "engagements": 1220,
+      "engagementRate": 0.0642
+    },
+    {
+      "id": "p2-4",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "TypeScript isn’t optional anymore",
+      "postedAt": 1786563485645,
+      "impressions": 25000,
+      "engagements": 1650,
+      "engagementRate": 0.066
+    },
+    {
+      "id": "p2-5",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Why fullstack devs are extinct",
+      "postedAt": 1786822685645,
+      "impressions": 18000,
+      "engagements": 1170,
+      "engagementRate": 0.065
+    },
+    {
+      "id": "p2-6",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Frontend frameworks are exhausting",
+      "postedAt": 1787168285645,
+      "impressions": 16000,
+      "engagements": 720,
+      "engagementRate": 0.045
+    },
+    {
+      "id": "p2-7",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "Nobody needs Docker on local",
+      "postedAt": 1787427485645,
+      "impressions": 14000,
+      "engagements": 560,
+      "engagementRate": 0.04
+    },
+    {
+      "id": "p2-8",
+      "formatId": "fmt-hottakes",
+      "creatorId": "jadoncreator",
+      "title": "AI code assistants are boring now",
+      "postedAt": 1787773085645,
+      "impressions": 15000,
+      "engagements": 570,
+      "engagementRate": 0.038
+    },
+    {
+      "id": "p3-1",
+      "formatId": "fmt-podclips",
+      "creatorId": "jadoncreator",
+      "title": "Guest on scaling from 0 to 100k users",
+      "postedAt": 1787341085645,
+      "impressions": 8000,
+      "engagements": 320,
+      "engagementRate": 0.04
+    },
+    {
+      "id": "p3-2",
+      "formatId": "fmt-podclips",
+      "creatorId": "jadoncreator",
+      "title": "Building in public without shame",
+      "postedAt": 1787513885645,
+      "impressions": 9000,
+      "engagements": 380,
+      "engagementRate": 0.0422
+    },
+    {
+      "id": "p3-3",
+      "formatId": "fmt-podclips",
+      "creatorId": "jadoncreator",
+      "title": "The biggest mistake indie hackers make",
+      "postedAt": 1787686685645,
+      "impressions": 8500,
+      "engagements": 350,
+      "engagementRate": 0.0411
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert-initial-f2",
+      "formatId": "fmt-hottakes",
+      "formatName": "Quick Opinion Hot Takes",
+      "creatorId": "jadoncreator",
+      "triggeredAt": 1787773085645,
+      "severity": "WARNING",
+      "decayPercentage": -41.5,
+      "message": "⚠️ Fatigue Alert: 'Quick Opinion Hot Takes' engagement is down 41.5% from baseline (3.8% vs 6.5%). Estimated half-life: ~3 posts before terminal decay. Recommendation: Rotate or pause.",
+      "suggestedPivots": [
+        "Switch to System Architecture Deep-Dives",
+        "Test long-form case studies"
+      ],
+      "acknowledged": false
+    }
+  ]
+}
