@@ -1,19 +1,17 @@
-import Link from 'next/link';
-
 export default function ShowcaseGrid() {
   return (
     <section id="work-showcase" className="relative px-4 sm:px-6 py-12 md:py-20 bg-[#f0eff5]">
       <div className="mx-auto max-w-6xl">
         
         {/* Dashboard Teaser Mockup Container */}
-        <Link href="/dashboard" className="relative block rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group cursor-pointer">
+        <div className="relative rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden min-h-[50vh] md:min-h-[75vh] flex items-center justify-center group cursor-pointer" onClick={() => window.location.href = '/dashboard'}>
           
           {/* Background Dashboard Mockup Image */}
           <div className="absolute inset-0 w-full h-full">
             <img 
               src="/dashboard-ui.jpeg" 
               alt="Dashboard Preview" 
-              className="w-full h-full object-cover object-top blur-[5px] opacity-90 group-hover:blur-[8px] group-hover:opacity-75 transition-all duration-700 ease-out scale-105" 
+              className="w-full h-full object-cover object-top blur-[1.5px] opacity-100 group-hover:blur-[3px] group-hover:opacity-85 transition-all duration-700 ease-out scale-105" 
             />
             {/* Subtle dark gradient overlay to make the button pop */}
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700 ease-out" />
@@ -37,7 +35,7 @@ export default function ShowcaseGrid() {
             </div>
           </div>
 
-        </Link>
+        </div>
 
       </div>
     </section>
