@@ -82,7 +82,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_1px_0px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.8)] z-10" />
               
               {/* Half-Life SVG Logo in light grey (#d4d4d4) matching the text */}
-              <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[#d4d4d4]" viewBox="0 0 100 100" fill="currentColor">
+              <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-neutral-400" viewBox="0 0 100 100" fill="currentColor">
                 <path fillRule="evenodd" clipRule="evenodd" d="M50 4C24.6 4 4 24.6 4 50C4 75.4 24.6 96 50 96C75.4 96 96 75.4 96 50C96 24.6 75.4 4 50 4ZM50 14C69.9 14 86 30.1 86 50C86 69.9 69.9 86 50 86C30.1 86 14 69.9 14 50C14 30.1 30.1 14 50 14Z" />
                 <path d="M32 24H46L60 66H72V76H52L46 58L30 76H20L38 48Z" />
               </svg>
