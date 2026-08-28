@@ -47,15 +47,15 @@ export default function Hero() {
               Winning
             </span>
             
-            {/* BLOCK 1: Image Block (Increased border thickness, flex-shrink-0 to prevent skew) */}
+            {/* BLOCK 1: Image Block */}
             <motion.span 
               style={{ y: y1 }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               initial={{ rotate: -5 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="relative inline-flex flex-shrink-0 items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-[#111] overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.25),0_12px_24px_-8px_rgba(0,0,0,0.15)] border-[1.5px] border-[#0a0a0a] z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
+              className="relative inline-flex flex-shrink-0 items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-[#111] overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5),0_16px_32px_-8px_rgba(0,0,0,0.4)] border-[2.5px] border-black z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
             >
-              <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_1px_0px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.8)] z-10" />
+              <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_3px_5px_rgba(255,255,255,0.45),inset_0_-3px_6px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(255,255,255,0.1)] z-10" />
               <img src="/images/dashboard-analytics.jpg" className="w-full h-full object-cover" alt="SaaS Analytics Dashboard" />
             </motion.span>
             
@@ -69,17 +69,16 @@ export default function Hero() {
               have a
             </span>
             
-            {/* BLOCK 2: Dark Grey Illustration Block (Increased border thickness, flex-shrink-0) */}
+            {/* BLOCK 2: Dark Grey Illustration Block */}
             <motion.span 
               style={{ y: y2 }}
               whileHover={{ scale: 1.05, rotate: 0 }}
               initial={{ rotate: 4 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="relative inline-flex flex-shrink-0 items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-gradient-to-b from-[#2a2a2a] to-[#151515] overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.25),0_12px_24px_-8px_rgba(0,0,0,0.15)] border-[1.5px] border-[#0a0a0a] z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
+              className="relative inline-flex flex-shrink-0 items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-gradient-to-b from-[#2a2a2a] to-[#151515] overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5),0_16px_32px_-8px_rgba(0,0,0,0.4)] border-[2.5px] border-black z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
             >
-              <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_1px_0px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.8)] z-10" />
+              <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_3px_5px_rgba(255,255,255,0.45),inset_0_-3px_6px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(255,255,255,0.1)] z-10" />
               
-              {/* Flawless SVG implementation of Half-Life logo using a geometric text mask to prevent ANY path skewing */}
               <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-neutral-400 flex-shrink-0" viewBox="0 0 100 100" fill="currentColor">
                 <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="6" fill="none" />
                 <text x="50" y="55" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="64" textAnchor="middle" dominantBaseline="central" fill="currentColor">λ</text>
@@ -98,7 +97,6 @@ export default function Hero() {
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
           
-          {/* Double Container Button Effect */}
           <div className="relative p-1.5 sm:p-2 rounded-full bg-black/5 border border-black/10 shadow-[0_8px_24px_rgba(0,0,0,0.05)] backdrop-blur-md flex-shrink-0">
             <motion.a
               whileHover={{ scale: 1.02 }}
