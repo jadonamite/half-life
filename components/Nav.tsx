@@ -8,13 +8,13 @@ export default function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none p-5 md:p-8">
       <div className="mx-auto max-w-7xl flex items-center justify-between pointer-events-auto">
-        {/* Luxury Word Mark Logo (No Pill Enclosure) */}
+        {/* Luxury Word Mark Logo without hyphen */}
         <a
           href="#top"
           className="group inline-flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5"
         >
           <span className="font-serif italic text-2xl sm:text-[1.75rem] font-medium text-neutral-900 tracking-[-0.02em] select-none">
-            Half—Life
+            Halflife
           </span>
         </a>
 
