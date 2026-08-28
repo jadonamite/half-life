@@ -1,3 +1,5 @@
+"use client";
+
 export default function ShowcaseGrid() {
   return (
     <section id="work-showcase" className="relative px-4 sm:px-6 py-12 md:py-20 bg-[#f0eff5]">
