@@ -176,102 +176,76 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="dashboard-embed" style={{ padding: '2.5rem 1.75rem 3rem' }}>
-      {/* Top Bar matching Advance Dashboard */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+    <div className="bg-paper p-8 lg:p-12 w-full text-ink">
+      <div className="flex justify-between items-start flex-wrap gap-4 mb-10">
         <div>
-          <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-dim)', fontWeight: 600 }}>
+          <div className="text-accent text-[13px] font-semibold uppercase tracking-wide mb-1">
             Live Minds AI Decay Engine
-          </span>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.25rem 0 0', color: 'var(--text-main)' }}>
+          </div>
+          <h2 className="text-3xl font-medium m-0">
             Creator Fatigue Intelligence Console
           </h2>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span className="badge badge-minds">Minds Agent: Halflife</span>
-          <span className="badge badge-live">Audience Growth</span>
+        <div className="flex gap-2">
+          <span className="bg-paper-2 border border-hairline text-ink-2 px-3 py-1 rounded-full text-xs font-medium tracking-wide">
+            Minds Agent: Halflife
+          </span>
+          <span className="bg-accent-3 border border-accent-2 text-accent px-3 py-1 rounded-full text-xs font-medium tracking-wide">
+            Audience Growth
+          </span>
         </div>
       </div>
 
-      {/* Grid 1: Monitored Formats Cards */}
-      <div style={{ marginBottom: '2rem' }}>
-        <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', marginBottom: '0.75rem', fontWeight: 600 }}>
+      <div className="mb-12">
+        <div className="text-ink-3 text-xs uppercase tracking-wider font-semibold mb-4 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-accent" />
           Cross-Session Format Memory ({reports.length} Active)
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reports.map((r) => {
             const isProbation = r.status === 'PROBATION';
             const isFatiguing = r.status === 'FATIGUING' || r.status === 'DECAYED';
             return (
-              <div key={r.formatId} className="card" style={{ borderColor: isFatiguing ? 'var(--accent-amber)' : 'var(--border-subtle)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
+              <div key={r.formatId} className={`bg-card-raised rounded-card p-6 border ${isFatiguing ? 'border-[#FCA5A5]' : 'border-hairline'} shadow-sm relative overflow-hidden`}>
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
-                      {r.archetype}
-                    </span>
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-main)', margin: '0.1rem 0' }}>
-                      {r.formatName}
-                    </h3>
+                    <div className="text-[11px] text-ink-3 uppercase tracking-wider font-mono mb-1">{r.archetype}</div>
+                    <h3 className="text-[22px] font-medium leading-tight">{r.formatName}</h3>
                   </div>
-                  <span
-                    style={{
-                      fontSize: '0.7rem',
-                      padding: '0.2rem 0.5rem',
-                      borderRadius: '9999px',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 600,
-                      backgroundColor: isProbation
-                        ? 'rgba(148, 163, 184, 0.15)'
-                        : isFatiguing
-                        ? 'rgba(245, 158, 11, 0.15)'
-                        : 'rgba(16, 185, 129, 0.15)',
-                      color: isProbation
-                        ? 'var(--text-muted)'
-                        : isFatiguing
-                        ? 'var(--accent-amber)'
-                        : 'var(--accent-emerald)',
-                      border: `1px solid ${
-                        isProbation
-                          ? 'rgba(148, 163, 184, 0.3)'
-                          : isFatiguing
-                          ? 'rgba(245, 158, 11, 0.4)'
-                          : 'rgba(16, 185, 129, 0.3)'
-                      }`,
-                    }}
-                  >
+                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium border ${
+                    isProbation ? 'bg-paper-2 text-ink-2 border-hairline' :
+                    isFatiguing ? 'bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]' :
+                    'bg-[#F0FDF4] text-[#16A34A] border-[#BBF7D0]'
+                  }`}>
                     {r.status}
                   </span>
                 </div>
 
                 {isProbation ? (
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: '0.5rem 0' }}>
+                  <p className="text-ink-2 text-sm mt-4">
                     {r.postCount}/5 baseline posts. Fatigue analysis paused for calibration.
                   </p>
                 ) : (
                   <div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', margin: '0.75rem 0', background: 'var(--bg-surface)', padding: '0.6rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                    <div className="grid grid-cols-3 gap-3 my-4 bg-paper p-3 rounded-lg border border-hairline">
                       <div>
-                        <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>BASELINE</div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', fontFamily: 'var(--font-mono)' }}>
-                          {(r.baselineRate * 100).toFixed(1)}%
-                        </div>
+                        <div className="text-[10px] text-ink-3 uppercase tracking-wide">Baseline</div>
+                        <div className="text-sm font-bold font-mono">{(r.baselineRate * 100).toFixed(1)}%</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>TRAILING</div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', fontFamily: 'var(--font-mono)' }}>
-                          {(r.trailingRate * 100).toFixed(1)}%
-                        </div>
+                        <div className="text-[10px] text-ink-3 uppercase tracking-wide">Trailing</div>
+                        <div className="text-sm font-bold font-mono">{(r.trailingRate * 100).toFixed(1)}%</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>DECAY Δ</div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: r.decayPercentage >= 0 ? 'var(--accent-emerald)' : isFatiguing ? 'var(--accent-amber)' : 'var(--text-main)' }}>
+                        <div className="text-[10px] text-ink-3 uppercase tracking-wide">Decay Δ</div>
+                        <div className={`text-sm font-bold font-mono ${r.decayPercentage >= 0 ? 'text-[#16A34A]' : isFatiguing ? 'text-[#DC2626]' : 'text-ink'}`}>
                           {r.decayPercentage >= 0 ? '+' : ''}{r.decayPercentage}%
                         </div>
                       </div>
                     </div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>
-                      <span>Runway to 50%:</span>
-                      <span style={{ color: 'var(--text-main)', fontFamily: 'var(--font-mono)' }}>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-ink-2">Runway to 50%:</span>
+                      <span className="font-mono font-medium">
                         {r.halfLifePostsRemaining !== null ? `~${r.halfLifePostsRemaining} posts` : 'Stable'}
                       </span>
                     </div>
@@ -283,121 +257,77 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Grid 2: Simulator + Proactive Alerts */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-        {/* Simulation Injection */}
-        <div className="card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', margin: 0 }}>
-              Inject Post Metrics
-            </h3>
-            <div style={{ display: 'flex', gap: '0.35rem' }}>
-              <button
-                onClick={() => handlePreset('healthy')}
-                disabled={loading}
-                className="btn btn-secondary"
-                style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', color: 'var(--accent-emerald)' }}
-              >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="bg-card-raised border border-hairline rounded-panel p-8 shadow-sm">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-2xl font-medium">Inject Post Metrics</h3>
+            <div className="flex gap-2">
+              <button onClick={() => handlePreset('healthy')} disabled={loading} className="px-3 py-1 text-xs border border-hairline rounded-full hover:bg-paper transition-colors text-[#16A34A]">
                 + Healthy
               </button>
-              <button
-                onClick={() => handlePreset('fatigue')}
-                disabled={loading}
-                className="btn btn-secondary"
-                style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem', color: 'var(--accent-amber)' }}
-              >
+              <button onClick={() => handlePreset('fatigue')} disabled={loading} className="px-3 py-1 text-xs border border-hairline rounded-full hover:bg-paper transition-colors text-[#DC2626]">
                 - Fatigue
               </button>
             </div>
           </div>
 
-          <form onSubmit={handleManualSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <form onSubmit={handleManualSubmit} className="flex flex-col gap-5">
             <div>
-              <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.25rem' }}>
-                Select Format
-              </label>
-              <select
-                value={selectedFormatId}
-                onChange={(e) => setSelectedFormatId(e.target.value)}
-                className="input-field"
-              >
+              <label className="block text-xs font-semibold text-ink-2 uppercase tracking-wide mb-2">Select Format</label>
+              <select value={selectedFormatId} onChange={(e) => setSelectedFormatId(e.target.value)} className="w-full bg-paper border border-hairline rounded-pill px-4 py-3 text-sm outline-none focus:border-accent">
                 {formats.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.name} ({f.status})
-                  </option>
+                  <option key={f.id} value={f.id}>{f.name} ({f.status})</option>
                 ))}
               </select>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.25rem' }}>
-                  Impressions
-                </label>
-                <input
-                  type="number"
-                  value={impressions}
-                  onChange={(e) => setImpressions(e.target.value)}
-                  className="input-field"
-                />
+                <label className="block text-xs font-semibold text-ink-2 uppercase tracking-wide mb-2">Impressions</label>
+                <input type="number" value={impressions} onChange={(e) => setImpressions(e.target.value)} className="w-full bg-paper border border-hairline rounded-pill px-4 py-3 text-sm outline-none focus:border-accent" />
               </div>
               <div>
-                <label style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.25rem' }}>
-                  Engagements
-                </label>
-                <input
-                  type="number"
-                  value={engagements}
-                  onChange={(e) => setEngagements(e.target.value)}
-                  className="input-field"
-                />
+                <label className="block text-xs font-semibold text-ink-2 uppercase tracking-wide mb-2">Engagements</label>
+                <input type="number" value={engagements} onChange={(e) => setEngagements(e.target.value)} className="w-full bg-paper border border-hairline rounded-pill px-4 py-3 text-sm outline-none focus:border-accent" />
               </div>
             </div>
 
-            <button type="submit" disabled={loading} className="btn btn-primary" style={{ marginTop: '0.5rem' }}>
-              {loading ? 'Evaluating...' : 'Ingest & Recalibrate →'}
+            <button type="submit" disabled={loading} className="mt-2 bg-pill text-white rounded-pill px-6 py-3 font-medium flex items-center justify-center gap-3 hover:-translate-y-[1px] transition-transform w-full">
+              <span className="w-6 h-6 bg-accent rounded-chip flex items-center justify-center text-sm">›</span>
+              {loading ? 'Evaluating...' : 'Ingest & Recalibrate'}
             </button>
           </form>
 
           {feedback && (
-            <div style={{ marginTop: '0.75rem', padding: '0.5rem 0.75rem', background: 'var(--bg-surface)', borderRadius: '6px', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', border: '1px solid var(--border-subtle)' }}>
+            <div className="mt-5 bg-paper p-4 rounded-xl text-sm font-mono border border-hairline text-ink-2">
               {feedback}
             </div>
           )}
         </div>
 
-        {/* Autonomous Alert Queue */}
-        <div className="card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', margin: 0 }}>
-              Autonomous Alert Dispatch
-            </h3>
-            <span style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontFamily: 'var(--font-mono)' }}>
-              {alerts.length} Pending Unprompted
-            </span>
+        <div className="bg-card-raised border border-hairline rounded-panel p-8 shadow-sm">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-2xl font-medium">Autonomous Alert Dispatch</h3>
+            <span className="text-xs font-mono font-bold text-[#DC2626]">{alerts.length} Pending</span>
           </div>
 
           {alerts.length === 0 ? (
-            <div style={{ padding: '2rem 1rem', textAlign: 'center', color: 'var(--text-dim)', fontSize: '0.8rem', border: '1px dashed var(--border-subtle)', borderRadius: '8px' }}>
+            <div className="p-8 text-center text-ink-3 text-sm border border-dashed border-hairline rounded-2xl bg-paper">
               ✓ All monitored formats within safe decay bounds.
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxHeight: '240px', overflowY: 'auto' }}>
+            <div className="flex flex-col gap-4 max-h-[320px] overflow-y-auto pr-2">
               {alerts.map((a) => (
-                <div key={a.id} style={{ padding: '0.75rem', background: 'rgba(245, 158, 11, 0.08)', borderRadius: '8px', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-amber)', fontFamily: 'var(--font-mono)' }}>
+                <div key={a.id} className="p-5 bg-[#FEF2F2] border border-[#FECACA] rounded-2xl relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-xs font-bold text-[#DC2626] font-mono uppercase">
                       ⚠️ {a.severity} FATIGUE ALERT
                     </span>
-                    <button
-                      onClick={() => handleAcknowledge(a.id)}
-                      className="btn btn-secondary"
-                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.7rem' }}
-                    >
+                    <button onClick={() => handleAcknowledge(a.id)} className="text-xs font-medium text-ink-2 hover:text-ink underline">
                       Dismiss
                     </button>
                   </div>
-                  <p style={{ fontSize: '0.75rem', color: 'var(--text-main)', margin: '0.25rem 0', lineHeight: 1.4 }}>
+                  <p className="text-sm text-ink leading-relaxed">
                     {a.message}
                   </p>
                 </div>
@@ -405,60 +335,6 @@ export default function Dashboard() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Grid 3: Conversational Minds Agent Preview */}
-      <div className="card">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <div>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', margin: 0 }}>
-              Minds Conversational Terminal
-            </h3>
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
-              Query Halflife directly from persistent format memory
-            </span>
-          </div>
-          <span className="badge badge-minds">Skill: Half-Life</span>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxHeight: '200px', overflowY: 'auto', marginBottom: '1rem', paddingRight: '0.5rem' }}>
-          {chatMessages.map((m, i) => (
-            <div
-              key={i}
-              style={{
-                alignSelf: m.sender === 'user' ? 'flex-end' : 'flex-start',
-                maxWidth: '85%',
-                padding: '0.65rem 0.85rem',
-                borderRadius: '8px',
-                background: m.sender === 'user' ? 'var(--bg-surface)' : 'rgba(0, 242, 254, 0.08)',
-                border: `1px solid ${m.sender === 'user' ? 'var(--border-subtle)' : 'rgba(0, 242, 254, 0.25)'}`,
-                fontSize: '0.8rem',
-                color: 'var(--text-main)',
-                fontFamily: m.sender === 'mind' ? 'var(--font-mono)' : 'inherit',
-              }}
-            >
-              {m.text}
-            </div>
-          ))}
-          {chatThinking && (
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontStyle: 'italic' }}>
-              Halflife reading persistent memory...
-            </div>
-          )}
-        </div>
-
-        <form onSubmit={handleChatSend} style={{ display: 'flex', gap: '0.5rem' }}>
-          <input
-            type="text"
-            placeholder="Ask Halflife: 'What is my portfolio decay summary?'"
-            value={chatQuery}
-            onChange={(e) => setChatQuery(e.target.value)}
-            className="input-field"
-          />
-          <button type="submit" disabled={chatThinking || !chatQuery.trim()} className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>
-            Ask Mind →
-          </button>
-        </form>
       </div>
     </div>
   );

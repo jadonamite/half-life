@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corrected Premium Blocks Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { 
+      background-color: #f0eff5; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 3rem;
+    }
+    
+    .premium-3d-block {
+      /* Exactly 3:2.2 Ratio */
+      width: 180px;
+      height: 132px; 
+      border-radius: 2.25rem; /* Smooth rounded corners */
+      position: relative;
+      background-color: #1a1a1a;
+      
+      /* 1. The razor thin black border */
+      border: 1.5px solid #000000;
+      
+      /* 2. The diffuse 3D drop shadow */
+      box-shadow: 
+        0 24px 48px -12px rgba(0, 0, 0, 0.25),
+        0 12px 24px -8px rgba(0, 0, 0, 0.15);
+      
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 3. The Physical 3D Bevel Overlay */
+    /* We use an overlay so the lighting sits OVER the image in Block 1 */
+    .premium-3d-block::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      /* Inner white top highlight, inner dark bottom shadow */
+      box-shadow: 
+        inset 0 2.5px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    /* Specific to Block 2's dark grey bg */
+    .block-2-bg {
+      background: linear-gradient(180deg, #2a2a2a 0%, #151515 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <p class="text-neutral-500 font-medium tracking-tight">Exact 3:2.2 Ratio & Physical 3D Bevel (Image + Illustration)</p>
+
+  <div class="flex items-center gap-12">
+    <!-- Block 1: Real Picture -->
+    <div class="premium-3d-block group">
+      <img src="/home/jadonamite/.gemini/antigravity-cli/brain/a4750980-88b8-4edf-89cd-6db49550aebf/premium_hero_block_1787909471581.jpg" 
+           alt="Premium 3D Visual" 
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+    </div>
+
+    <!-- Block 2: Dark Grey Background with Light Grey Illustration -->
+    <div class="premium-3d-block block-2-bg">
+      <!-- Light grey illustration -->
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d4d4d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+    </div>
+  </div>
+
+</body>
+</html>
