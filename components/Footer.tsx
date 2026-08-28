@@ -40,13 +40,14 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Circular Social/Link Icons */}
         <div className="pt-10 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-neutral-400">
           
-          {/* Copyright Pill */}
-          <div className="px-5 py-2.5 rounded-full border border-neutral-800 bg-neutral-900/60 font-mono flex items-center gap-3">
-            <svg className="w-4 h-4 text-white" viewBox="0 0 100 100" fill="currentColor">
-              <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="8" fill="none" />
-              <text x="50" y="55" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="64" textAnchor="middle" dominantBaseline="central" fill="currentColor">λ</text>
-            </svg>
-            <span>@Copyright 2026</span>
+          {/* Luxury Wordmark & Copyright */}
+          <div className="flex items-center gap-4">
+            <div className="font-serif italic font-medium text-2xl tracking-tight text-white">
+              Halflife
+            </div>
+            <div className="px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900/60 font-mono flex items-center">
+              <span>@Copyright 2026</span>
+            </div>
           </div>
 
           {/* Circular Social & Explorer Links */}
