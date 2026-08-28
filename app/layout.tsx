@@ -3,8 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Half-Life — Autonomous Creative Fatigue Detection for Creators',
-  description:
-    'A persistent Minds Agent that detects when winning content formats begin to decay, projecting half-life curves and autonomously alerting creators before audience churn hits.',
+  description: 'HalfLife | Autonoumous Creative Fatigue Detection',
 };
 
 export default function RootLayout({
