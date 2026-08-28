@@ -241,169 +241,203 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Main Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Left Column (Chart + Alerts) */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
+        {/* Main View Area */}
+        {activeTab === 'dashboard' && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            {/* Chart Area */}
-            <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-medium text-premium-text-main">Format Decay Curve</h3>
-                <div className="bg-white/60 p-1 rounded-full flex text-xs font-medium border border-white">
-                  <button className="bg-premium-button-dark text-white px-4 py-1.5 rounded-full shadow-sm">Trailing</button>
-                  <button className="text-premium-text-muted px-4 py-1.5 rounded-full">Baseline</button>
-                  <button className="text-premium-text-muted px-4 py-1.5 rounded-full">Projection</button>
+            {/* Left Column (Chart + Alerts) */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
+              
+              {/* Chart Area */}
+              <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-lg font-medium text-premium-text-main">Format Decay Curve</h3>
+                  <div className="bg-white/60 p-1 rounded-full flex text-xs font-medium border border-white">
+                    <button className="bg-premium-button-dark text-white px-4 py-1.5 rounded-full shadow-sm">Trailing</button>
+                    <button className="text-premium-text-muted px-4 py-1.5 rounded-full">Baseline</button>
+                    <button className="text-premium-text-muted px-4 py-1.5 rounded-full">Projection</button>
+                  </div>
+                </div>
+                
+                <div className="h-[300px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={chartData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                      <defs>
+                        <linearGradient id="colorBaseline" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#673AB7" stopOpacity={0.1}/>
+                          <stop offset="95%" stopColor="#673AB7" stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorTrailing" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#E66F42" stopOpacity={0.15}/>
+                          <stop offset="95%" stopColor="#E66F42" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+                      <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{fill: '#7A7B7E', fontSize: 12}} dy={10} />
+                      <YAxis axisLine={false} tickLine={false} tick={{fill: '#7A7B7E', fontSize: 12}} />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Area type="monotone" dataKey="baseline" stroke="#673AB7" strokeWidth={2} fillOpacity={1} fill="url(#colorBaseline)" />
+                      <Area type="monotone" dataKey="trailing" stroke="#E66F42" strokeWidth={2} fillOpacity={1} fill="url(#colorTrailing)" />
+                    </AreaChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
-              
-              <div className="h-[300px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="colorBaseline" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#673AB7" stopOpacity={0.1}/>
-                        <stop offset="95%" stopColor="#673AB7" stopOpacity={0}/>
-                      </linearGradient>
-                      <linearGradient id="colorTrailing" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#E66F42" stopOpacity={0.15}/>
-                        <stop offset="95%" stopColor="#E66F42" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
-                    <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{fill: '#7A7B7E', fontSize: 12}} dy={10} />
-                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#7A7B7E', fontSize: 12}} />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Area type="monotone" dataKey="baseline" stroke="#673AB7" strokeWidth={2} fillOpacity={1} fill="url(#colorBaseline)" />
-                    <Area type="monotone" dataKey="trailing" stroke="#E66F42" strokeWidth={2} fillOpacity={1} fill="url(#colorTrailing)" />
-                  </AreaChart>
-                </ResponsiveContainer>
+
+              {/* Alerts Feed */}
+              <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-lg font-medium text-premium-text-main">Live Proactive Alerts</h3>
+                  <div className="flex gap-2">
+                    <span className="bg-premium-button-dark text-white px-3 py-1 text-xs rounded-full">All</span>
+                    <span className="bg-white text-premium-text-muted border border-white px-3 py-1 text-xs rounded-full">Warning</span>
+                    <span className="bg-white text-premium-text-muted border border-white px-3 py-1 text-xs rounded-full">Safe</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 max-h-[200px] overflow-y-auto pr-2">
+                  {alerts.length === 0 ? (
+                    <div className="text-center py-6 text-sm text-premium-text-muted">No pending alerts from Halflife.</div>
+                  ) : (
+                    alerts.map(a => (
+                      <div key={a.id} className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-[#FEF2F2] flex items-center justify-center text-[#DC2626] shrink-0">
+                            <Warning size={20} weight="fill" />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-semibold text-premium-text-main mb-1">Fatigue Alert: {a.severity}</h4>
+                            <p className="text-xs text-premium-text-muted leading-relaxed">{a.message}</p>
+                          </div>
+                        </div>
+                        <button onClick={() => handleAcknowledge(a.id)} className="bg-white border border-gray-200 text-xs font-medium px-3 py-1.5 rounded-full hover:bg-gray-50 transition-colors shrink-0">
+                          Dismiss
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
+
             </div>
 
-            {/* Alerts Feed */}
-            <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-medium text-premium-text-main">Live Proactive Alerts</h3>
-                <div className="flex gap-2">
-                  <span className="bg-premium-button-dark text-white px-3 py-1 text-xs rounded-full">All</span>
-                  <span className="bg-white text-premium-text-muted border border-white px-3 py-1 text-xs rounded-full">Warning</span>
-                  <span className="bg-white text-premium-text-muted border border-white px-3 py-1 text-xs rounded-full">Safe</span>
+            {/* Right Column (Sidebar) */}
+            <div className="flex flex-col gap-6">
+              
+              {/* Format Health Gauges */}
+              <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-lg font-medium text-premium-text-main mb-6">Format Health</h3>
+                
+                <div className="bg-white/70 border border-white rounded-2xl p-4 mb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-sm font-semibold text-premium-text-main">Quick Opinion Hot Takes</span>
+                    <span className="text-[10px] font-bold text-[#E66F42] uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-full">Fatiguing</span>
+                  </div>
+                  <div className="text-xs text-premium-text-muted">Last calibrated: 2 hours ago</div>
+                </div>
+
+                <div className="flex justify-between px-2 mb-6">
+                  <ArcGauge percentage={41} color="#E66F42" label="Decay Drop" subLabel="vs Baseline" />
+                  <ArcGauge percentage={85} color="#673AB7" label="Reliability" subLabel="Model Conf." />
+                  <ArcGauge percentage={12} color="#16A34A" label="Runway" subLabel="3 Posts Left" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <button className="bg-white border border-gray-200 text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-gray-50 flex items-center justify-center gap-2">
+                    <ArrowsClockwise size={14} weight="bold" /> Recalibrate
+                  </button>
+                  <button className="bg-premium-button-dark text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm flex items-center justify-center gap-2">
+                    <ShieldCheck size={14} weight="bold" /> Rotate
+                  </button>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 max-h-[200px] overflow-y-auto pr-2">
-                {alerts.length === 0 ? (
-                  <div className="text-center py-6 text-sm text-premium-text-muted">No pending alerts from Halflife.</div>
-                ) : (
-                  alerts.map(a => (
-                    <div key={a.id} className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between shadow-sm">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#FEF2F2] flex items-center justify-center text-[#DC2626] shrink-0">
-                          <Warning size={20} weight="fill" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-semibold text-premium-text-main mb-1">Fatigue Alert: {a.severity}</h4>
-                          <p className="text-xs text-premium-text-muted leading-relaxed">{a.message}</p>
-                        </div>
-                      </div>
-                      <button onClick={() => handleAcknowledge(a.id)} className="bg-white border border-gray-200 text-xs font-medium px-3 py-1.5 rounded-full hover:bg-gray-50 transition-colors shrink-0">
-                        Dismiss
-                      </button>
-                    </div>
-                  ))
-                )}
-                {/* Mock healthy feed item just for aesthetics if no alerts */}
-                {alerts.length === 0 && (
-                  <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-[#F0FDF4] flex items-center justify-center text-[#16A34A]">
-                        <CheckCircle size={20} weight="fill" />
+              {/* Input Injection Block */}
+              <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm flex-1">
+                <h3 className="text-lg font-medium text-premium-text-main mb-4">Manual Input Sync</h3>
+                
+                <div className="flex flex-col gap-4">
+                  <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Clock size={16} className="text-gray-600" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-premium-text-main mb-1">Deep-Dive Format</h4>
-                        <p className="text-xs text-premium-text-muted">Analyzed 12 posts. Retaining 92% baseline engagement. Safe.</p>
+                        <div className="text-sm font-semibold text-premium-text-main">Impressions</div>
+                        <div className="text-[10px] text-premium-text-muted">Raw reach metric</div>
                       </div>
                     </div>
-                    <span className="bg-[#F0FDF4] text-[#16A34A] text-xs font-medium px-3 py-1 rounded-full border border-[#BBF7D0]">Healthy</span>
+                    <input type="text" placeholder="15,000" className="w-20 bg-transparent border-b border-gray-300 text-right text-sm font-mono focus:outline-none focus:border-premium-button-dark" />
                   </div>
-                )}
-              </div>
-            </div>
 
-          </div>
-
-          {/* Right Column (Sidebar) */}
-          <div className="flex flex-col gap-6">
-            
-            {/* Format Health Gauges */}
-            <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm">
-              <h3 className="text-lg font-medium text-premium-text-main mb-6">Format Health</h3>
-              
-              <div className="bg-white/70 border border-white rounded-2xl p-4 mb-4">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-sm font-semibold text-premium-text-main">Quick Opinion Hot Takes</span>
-                  <span className="text-[10px] font-bold text-[#E66F42] uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-full">Fatiguing</span>
+                  <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Lightning size={16} className="text-gray-600" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-premium-text-main">Engagements</div>
+                        <div className="text-[10px] text-premium-text-muted">Likes, replies, rt</div>
+                      </div>
+                    </div>
+                    <input type="text" placeholder="570" className="w-20 bg-transparent border-b border-gray-300 text-right text-sm font-mono focus:outline-none focus:border-premium-button-dark" />
+                  </div>
                 </div>
-                <div className="text-xs text-premium-text-muted">Last calibrated: 2 hours ago</div>
-              </div>
 
-              <div className="flex justify-between px-2 mb-6">
-                <ArcGauge percentage={41} color="#E66F42" label="Decay Drop" subLabel="vs Baseline" />
-                <ArcGauge percentage={85} color="#673AB7" label="Reliability" subLabel="Model Conf." />
-                <ArcGauge percentage={12} color="#16A34A" label="Runway" subLabel="3 Posts Left" />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <button className="bg-white border border-gray-200 text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-gray-50 flex items-center justify-center gap-2">
-                  <ArrowsClockwise size={14} weight="bold" /> Recalibrate
-                </button>
-                <button className="bg-premium-button-dark text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm flex items-center justify-center gap-2">
-                  <ShieldCheck size={14} weight="bold" /> Rotate
+                <button className="w-full mt-6 bg-premium-button-dark text-white rounded-full py-3 text-sm font-medium hover:bg-black transition-colors flex justify-center items-center gap-2 shadow-float">
+                  <Plus weight="bold" /> Run Engine Audit
                 </button>
               </div>
+
             </div>
+          </div>
+        )}
 
-            {/* Input Injection Block */}
-            <div className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm flex-1">
-              <h3 className="text-lg font-medium text-premium-text-main mb-4">Manual Input Sync</h3>
-              
-              <div className="flex flex-col gap-4">
-                <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                      <Clock size={16} className="text-gray-600" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-premium-text-main">Impressions</div>
-                      <div className="text-[10px] text-premium-text-muted">Raw reach metric</div>
-                    </div>
+        {activeTab === 'formats' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {formats.map(f => (
+              <div key={f.id} className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <h4 className="text-lg font-medium text-premium-text-main">{f.name}</h4>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${f.status === 'HEALTHY' ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-600'}`}>
+                      {f.status}
+                    </span>
                   </div>
-                  <input type="text" placeholder="15,000" className="w-20 bg-transparent border-b border-gray-300 text-right text-sm font-mono focus:outline-none focus:border-premium-button-dark" />
+                  <p className="text-sm text-premium-text-muted mb-6">{f.description}</p>
                 </div>
-
-                <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                      <Lightning size={16} className="text-gray-600" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-premium-text-main">Engagements</div>
-                      <div className="text-[10px] text-premium-text-muted">Likes, replies, rt</div>
-                    </div>
+                <div className="flex justify-between items-end border-t border-white/50 pt-4">
+                  <div>
+                    <div className="text-2xl font-light">{f.postCount}</div>
+                    <div className="text-[10px] text-premium-text-muted uppercase">Posts Analyzed</div>
                   </div>
-                  <input type="text" placeholder="570" className="w-20 bg-transparent border-b border-gray-300 text-right text-sm font-mono focus:outline-none focus:border-premium-button-dark" />
+                  <div>
+                    <div className="text-2xl font-light text-premium-text-main">{(f.baselineEngagementRate * 100).toFixed(1)}%</div>
+                    <div className="text-[10px] text-premium-text-muted uppercase">Baseline Retention</div>
+                  </div>
                 </div>
               </div>
-
-              <button className="w-full mt-6 bg-premium-button-dark text-white rounded-full py-3 text-sm font-medium hover:bg-black transition-colors flex justify-center items-center gap-2 shadow-float">
-                <Plus weight="bold" /> Run Engine Audit
-              </button>
-            </div>
-
+            ))}
           </div>
-        </div>
+        )}
+
+        {activeTab === 'logs' && (
+          <div className="bg-[#1C1C1D] rounded-3xl p-6 font-mono text-sm shadow-dark overflow-hidden h-[600px] flex flex-col">
+            <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#2e2e36]">
+              <div className="text-white flex items-center gap-3">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" /> Engine Live Feed
+              </div>
+              <button className="text-[#a2a5aa] hover:text-white transition-colors">Clear</button>
+            </div>
+            <div className="flex-1 overflow-y-auto space-y-4 pr-2">
+              <div className="text-[#a2a5aa]">&gt; [15:02:44] Polling APIs for new content from jadonamite...</div>
+              <div className="text-emerald-400">&gt; [15:02:45] Found 1 new post matching format ID "hot_takes_1"</div>
+              <div className="text-[#a2a5aa]">&gt; [15:02:45] Ingesting metrics... Impressions: 12,400 | Engagements: 210</div>
+              <div className="text-amber-400">&gt; [15:02:46] Calculating decay... Engagement Rate 1.69% (Baseline 3.2%)</div>
+              <div className="text-orange-500">&gt; [15:02:46] WARNING: Decay curve steepening. Adjusting half-life projection to 3 posts.</div>
+              <div className="text-[#a2a5aa]">&gt; [15:02:47] Persisting to memory vector store... Done.</div>
+            </div>
+          </div>
+        )}
 
         {/* Dashboard Footer (Xenia format) */}
         <footer
