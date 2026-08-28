@@ -4,7 +4,7 @@ export default function ShowcaseGrid() {
       <div className="mx-auto max-w-6xl">
         
         {/* Dashboard Teaser Mockup Container */}
-        <div className="relative rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group">
+        <div className="relative rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group cursor-pointer" onClick={() => window.location.href = '/dashboard'}>
           
           {/* Background Dashboard Mockup Image */}
           <div className="absolute inset-0 w-full h-full">
@@ -17,17 +17,22 @@ export default function ShowcaseGrid() {
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700 ease-out" />
           </div>
 
-          {/* Center Button */}
-          <div className="relative z-10 flex flex-col items-center">
-            <a 
-              href="/dashboard" 
-              className="inline-flex items-center gap-3 px-8 py-4 sm:px-10 sm:py-5 rounded-full bg-white text-black font-semibold tracking-tight text-base sm:text-lg shadow-[0_16px_40px_rgba(0,0,0,0.3)] hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-300"
-            >
+          {/* Floating Action Button (Hanzo Style) */}
+          <div className="relative z-10 flex flex-col items-center justify-center -mt-8 transition-transform duration-500 group-hover:scale-105">
+            {/* Tooltip Pill */}
+            <div className="relative mb-3 px-4 py-2 rounded-full bg-[#111] border border-neutral-700 text-[11px] font-semibold text-white tracking-wide shadow-xl">
               See Live Audit
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              {/* Tooltip Triangle */}
+              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111] border-b border-r border-neutral-700 rotate-45" />
+            </div>
+            
+            {/* Circular Base with Lambda Icon */}
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#e3dfd8] text-neutral-950 flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-white/60">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="6" fill="none" />
+                <text x="50" y="55" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="64" textAnchor="middle" dominantBaseline="central" fill="currentColor">λ</text>
               </svg>
-            </a>
+            </div>
           </div>
 
         </div>
