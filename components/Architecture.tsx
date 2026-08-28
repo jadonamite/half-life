@@ -18,7 +18,7 @@ export default function Architecture() {
       quote:
         'The Minds Agent queries persistent format memory across sessions. It recalls your historical baselines, previous fatigue alerts, and past rotations without re-teaching.',
       rule: 'Minds Native Integration: Halflife cross-session state.',
-      avatar: '/minds-logo-white.svg',
+      avatar: '/image.png',
       author: 'Minds Bazaar Agent',
       role: 'Autonomous AI Integration',
     },
@@ -77,7 +77,7 @@ export default function Architecture() {
                   <img
                     src={g.avatar}
                     alt={g.author}
-                    className="w-10 h-10 rounded-full object-cover ring-1 ring-neutral-200 bg-neutral-900 p-1.5"
+                    className="w-10 h-10 rounded-full object-cover ring-1 ring-neutral-200 "
                   />
                   <div>
                     <div className="text-xs font-semibold text-neutral-900">{g.author}</div>
