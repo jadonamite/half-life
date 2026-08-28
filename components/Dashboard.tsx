@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Plus, ArrowsClockwise, Faders, CheckCircle, Warning, Clock, Lightning, ChartLineUp, ShieldCheck } from '@phosphor-icons/react';
 import { ContentFormat, FatigueReport, ProactiveAlert } from '@/lib/types';
+import { Wordmark } from '@/components/Wordmark';
+import { PillButton } from '@/components/Pill';
 
 // Mock chart data for the beautiful curve
 const chartData = [
@@ -108,35 +110,84 @@ export default function Dashboard() {
         <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-10">
           <div className="flex w-full xl:w-auto justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-premium-button-dark rounded-xl flex items-center justify-center text-white">
+              <div className="w-8 h-8 bg-ink rounded-xl flex items-center justify-center text-white">
                 <Lightning weight="bold" />
               </div>
-              <span className="text-lg font-semibold tracking-tight">Halflife</span>
+              <Wordmark className="!text-ink !text-[22px]" />
             </div>
           </div>
 
-          <div className="hidden md:flex bg-white/50 backdrop-blur-md p-1.5 rounded-full border border-white">
-            <button className="bg-premium-button-dark text-white px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-              <ChartLineUp weight="bold" /> Dashboard
+          <nav
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              background: 'var(--card)',
+              padding: 3,
+              borderRadius: 9999,
+              border: '1px solid var(--hairline)',
+            }}
+            className="hidden md:flex"
+          >
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              style={{
+                padding: '6px 16px',
+                borderRadius: 9999,
+                fontSize: 13.5,
+                fontWeight: 500,
+                background: activeTab === 'dashboard' ? 'var(--card-raised)' : 'transparent',
+                color: activeTab === 'dashboard' ? 'var(--ink)' : 'var(--ink-2)',
+                boxShadow: activeTab === 'dashboard' ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+                transition: 'all 200ms ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <ChartLineUp weight={activeTab === 'dashboard' ? 'bold' : 'regular'} /> Dashboard
             </button>
-            <button className="text-premium-text-muted hover:text-premium-text-main px-5 py-2 rounded-full text-sm font-medium transition-colors">
+            <button
+              onClick={() => setActiveTab('formats')}
+              style={{
+                padding: '6px 16px',
+                borderRadius: 9999,
+                fontSize: 13.5,
+                fontWeight: 500,
+                background: activeTab === 'formats' ? 'var(--card-raised)' : 'transparent',
+                color: activeTab === 'formats' ? 'var(--ink)' : 'var(--ink-2)',
+                boxShadow: activeTab === 'formats' ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+                transition: 'all 200ms ease',
+              }}
+            >
               Formats
             </button>
-            <button className="text-premium-text-muted hover:text-premium-text-main px-5 py-2 rounded-full text-sm font-medium transition-colors">
+            <button
+              onClick={() => setActiveTab('logs')}
+              style={{
+                padding: '6px 16px',
+                borderRadius: 9999,
+                fontSize: 13.5,
+                fontWeight: 500,
+                background: activeTab === 'logs' ? 'var(--card-raised)' : 'transparent',
+                color: activeTab === 'logs' ? 'var(--ink)' : 'var(--ink-2)',
+                boxShadow: activeTab === 'logs' ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+                transition: 'all 200ms ease',
+              }}
+            >
               Engine Logs
             </button>
-          </div>
+          </nav>
 
           <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto justify-start xl:justify-end">
-            <button className="bg-white/60 hover:bg-white p-2.5 rounded-full text-premium-text-main border border-white/80 transition-colors">
-              <ArrowsClockwise weight="bold" />
-            </button>
-            <button className="bg-white/60 hover:bg-white px-4 py-2.5 rounded-full text-premium-text-main border border-white/80 text-sm font-medium flex items-center gap-2 transition-colors">
-              <Faders weight="bold" /> Filter
-            </button>
-            <button className="bg-premium-button-dark hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-colors shadow-sm">
-              <Plus weight="bold" /> Inject Post
-            </button>
+            <PillButton variant="ghost" className="!px-3 !h-[36px]" mark={<ArrowsClockwise weight="bold" />}>
+              Sync
+            </PillButton>
+            <PillButton variant="ghost" className="!px-4 !h-[36px]" mark={<Faders weight="bold" />}>
+              Filter
+            </PillButton>
+            <PillButton mark={<Plus weight="bold" />} className="!h-[36px] !text-sm">
+              Inject Post
+            </PillButton>
           </div>
         </div>
 
@@ -352,8 +403,47 @@ export default function Dashboard() {
             </div>
 
           </div>
-
         </div>
+
+        {/* Dashboard Footer (Xenia format) */}
+        <footer
+          className="mt-12 pt-6"
+          style={{
+            borderTop: '1px solid var(--premium-glass-border)',
+            borderColor: 'rgba(255,255,255,0.4)'
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 12,
+              fontSize: 13,
+              color: 'var(--premium-text-muted)',
+            }}
+          >
+            <span>© 2026 Halflife &bull; Autonomous Creative Fatigue Detection</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Engine Config
+              </a>
+              <span aria-hidden style={{ opacity: 0.4 }}>|</span>
+              <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Docs
+              </a>
+              <span aria-hidden style={{ opacity: 0.4 }}>|</span>
+              <a
+                href="#"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </footer>
+
       </div>
     </div>
   );

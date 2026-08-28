@@ -82,3 +82,132 @@
   border: 1px solid rgba(0, 0, 0, 0.9);
 }
 
+
+/* ---------- Xenia pill button ---------- */
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 4px 48px 4px 20px;
+  background: var(--pill);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: padding 450ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 400ms ease,
+              color 400ms ease,
+              border-color 400ms ease,
+              box-shadow 400ms ease,
+              transform 160ms ease;
+}
+
+.pill:hover:not(:disabled) {
+  padding: 4px 20px 4px 48px;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 24px -2px rgba(19, 145, 226, 0.55), 0 4px 12px rgba(19, 145, 226, 0.25);
+}
+
+.pill:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.pill:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pill-text {
+  position: relative;
+  z-index: 1;
+  transition: transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pill-chip {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  transition: right 450ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 400ms ease,
+              color 400ms ease;
+}
+
+.pill:hover:not(:disabled) .pill-chip {
+  right: calc(100% - 38px);
+  transform: translateY(-50%) rotate(45deg);
+  background: #ffffff;
+  color: var(--accent);
+}
+
+/* Ghost variant */
+.pill-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline);
+  box-shadow: none;
+}
+
+.pill-ghost .pill-chip {
+  background: var(--card);
+  color: var(--ink-2);
+}
+
+.pill-ghost:hover:not(:disabled) {
+  background: var(--card-raised);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 20px -4px rgba(19, 145, 226, 0.25);
+}
+
+.pill-ghost:hover:not(:disabled) .pill-chip {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Plain variant */
+.pill-plain {
+  height: auto;
+  padding: 8px 18px;
+  border-radius: 12px;
+}
+
+.pill-plain:hover:not(:disabled) {
+  padding: 8px 18px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.pill-ghost.pill-plain {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline);
+}
+
+.pill-ghost.pill-plain:hover:not(:disabled) {
+  background: var(--card-raised);
+  color: var(--accent);
+  border-color: var(--accent);
+}
