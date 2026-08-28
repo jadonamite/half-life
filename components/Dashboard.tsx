@@ -6,6 +6,7 @@ import { Plus, ArrowsClockwise, Faders, CheckCircle, Warning, Clock, Lightning, 
 import { ContentFormat, FatigueReport, ProactiveAlert } from '@/lib/types';
 import { Wordmark } from '@/components/Wordmark';
 import { PillButton } from '@/components/Pill';
+import ChatPreview from '@/components/ChatPreview';
 
 // Mock chart data for the beautiful curve
 const chartData = [
@@ -175,6 +176,36 @@ export default function Dashboard() {
               }}
             >
               Engine Logs
+            </button>
+            <button
+              onClick={() => setActiveTab('chat')}
+              style={{
+                padding: '6px 16px',
+                borderRadius: 9999,
+                fontSize: 13.5,
+                fontWeight: 500,
+                background: activeTab === 'chat' ? 'var(--card-raised)' : 'transparent',
+                color: activeTab === 'chat' ? 'var(--ink)' : 'var(--ink-2)',
+                boxShadow: activeTab === 'chat' ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+                transition: 'all 200ms ease',
+              }}
+            >
+              Agent Chat
+            </button>
+            <button
+              onClick={() => setActiveTab('api')}
+              style={{
+                padding: '6px 16px',
+                borderRadius: 9999,
+                fontSize: 13.5,
+                fontWeight: 500,
+                background: activeTab === 'api' ? 'var(--card-raised)' : 'transparent',
+                color: activeTab === 'api' ? 'var(--ink)' : 'var(--ink-2)',
+                boxShadow: activeTab === 'api' ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+                transition: 'all 200ms ease',
+              }}
+            >
+              API Keys
             </button>
           </nav>
 
@@ -435,6 +466,58 @@ export default function Dashboard() {
               <div className="text-amber-400">&gt; [15:02:46] Calculating decay... Engagement Rate 1.69% (Baseline 3.2%)</div>
               <div className="text-orange-500">&gt; [15:02:46] WARNING: Decay curve steepening. Adjusting half-life projection to 3 posts.</div>
               <div className="text-[#a2a5aa]">&gt; [15:02:47] Persisting to memory vector store... Done.</div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'chat' && (
+          <div className="max-w-4xl mx-auto h-[600px] flex flex-col items-center justify-center pt-8">
+             <ChatPreview />
+          </div>
+        )}
+
+        {activeTab === 'api' && (
+          <div className="max-w-4xl mx-auto bg-white/40 border border-white/60 rounded-3xl p-8 shadow-sm">
+            <div className="mb-8 border-b border-white/50 pb-6">
+              <h2 className="text-2xl font-medium text-premium-text-main mb-2">API Configuration</h2>
+              <p className="text-premium-text-muted">Manage your secret keys to interact with the Halflife ingestion engine programmatically.</p>
+            </div>
+            
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-medium text-premium-text-main">Production Secret Key</h3>
+                <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Active</span>
+              </div>
+              <p className="text-sm text-premium-text-muted mb-4">This key gives full access to ingest posts and trigger decay audits. Do not expose it in client-side code.</p>
+              
+              <div className="flex items-center gap-3">
+                <div className="flex-1 bg-white border border-gray-200 rounded-xl px-4 py-3 font-mono text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap select-all relative">
+                  hl_live_***********************************9f2a
+                  <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
+                </div>
+                <button className="bg-white border border-gray-200 p-3 rounded-xl hover:bg-gray-50 transition-colors shadow-sm text-premium-text-main">
+                  Copy
+                </button>
+                <button className="bg-premium-button-dark text-white px-5 py-3 rounded-xl font-medium shadow-sm hover:bg-black transition-colors whitespace-nowrap">
+                  Roll Key
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white/70 rounded-2xl p-6 border border-white">
+              <h3 className="text-lg font-medium text-premium-text-main mb-2">Webhook URL</h3>
+              <p className="text-sm text-premium-text-muted mb-4">Receive real-time payloads when a format hits terminal decay.</p>
+              <div className="flex gap-3">
+                <input 
+                  type="url" 
+                  placeholder="https://api.yourdomain.com/webhooks/halflife"
+                  className="flex-1 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-premium-button-dark"
+                  defaultValue="https://api.namite.xyz/webhooks/halflife"
+                />
+                <button className="bg-white border border-gray-200 px-5 py-3 rounded-xl font-medium hover:bg-gray-50 transition-colors shadow-sm">
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         )}
