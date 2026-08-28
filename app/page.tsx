@@ -6,7 +6,6 @@ import Process from '@/components/Process';
 import Architecture from '@/components/Architecture';
 import Timeline from '@/components/Timeline';
 import TermsCard from '@/components/TermsCard';
-import BadgeStrip from '@/components/BadgeStrip';
 import Faq from '@/components/Faq';
 
 import Dashboard from '@/components/Dashboard'; // just checking if it was fully removed
@@ -42,7 +41,6 @@ export default function HomePage() {
         <TermsCard />
 
         {/* 9. Badge Strip */}
-        <BadgeStrip />
 
         {/* 10. FAQ Accordion */}
         <Faq />
