@@ -98,25 +98,12 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#EBECEE] text-premium-text-main font-sans selection:bg-premium-button-dark selection:text-white p-4 sm:p-8 relative overflow-hidden flex justify-center items-start pt-8 sm:pt-12 pb-24">
-      
-      {/* Background Organic Blurs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-200/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[90px] pointer-events-none" />
-
-      {/* Main Glass Panel */}
-      <div className="w-full max-w-[1400px] mx-auto bg-premium-glass backdrop-blur-2xl border border-premium-glass-border rounded-3xl sm:rounded-[2.5rem] shadow-glass flex flex-col p-5 sm:p-8 relative z-10">
+    <div className="min-h-screen bg-premium-glass font-sans selection:bg-premium-button-dark selection:text-white flex flex-col relative z-10">
         
         {/* Top Navigation */}
-        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-10">
+        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-10 p-5 sm:p-8 border-b border-premium-glass-border bg-white/30 backdrop-blur-md">
           <div className="flex w-full xl:w-auto justify-between items-center">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-ink rounded-xl flex items-center justify-center text-white">
-                <Lightning weight="bold" />
-              </div>
-              <Wordmark className="!text-ink !text-[22px]" />
-            </div>
+            <Wordmark className="!text-ink !text-[22px]" />
           </div>
 
           <nav
@@ -211,20 +198,22 @@ export default function Dashboard() {
           </nav>
 
           <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto justify-start xl:justify-end">
-            <PillButton variant="ghost" className="!px-3 !h-[36px]" mark={<ArrowsClockwise weight="bold" />}>
-              Sync
-            </PillButton>
-            <PillButton variant="ghost" className="!px-4 !h-[36px]" mark={<Faders weight="bold" />}>
-              Filter
-            </PillButton>
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-white/50 transition-colors">
+              <ArrowsClockwise weight="bold" /> Sync
+            </button>
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-white/50 transition-colors">
+              <Faders weight="bold" /> Filter
+            </button>
             <PillButton mark={<Plus weight="bold" />} className="!h-[36px] !text-sm">
               Inject Post
             </PillButton>
           </div>
         </div>
 
-        {/* Title & Stats Row */}
-        <div className="mb-10">
+        {/* Main Content Area */}
+        <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-8 flex-1">
+          {/* Title & Stats Row */}
+          <div className="mb-10">
           <h1 className="text-4xl font-medium tracking-tight mb-8">Creator Intelligence Center</h1>
           
           <div className="flex flex-wrap gap-8 lg:gap-16 items-center">
@@ -562,6 +551,8 @@ export default function Dashboard() {
           </div>
         </footer>
 
+        </div>
+        
       </div>
     </div>
   );
