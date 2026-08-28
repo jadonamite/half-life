@@ -169,7 +169,7 @@ export default function Dashboard() {
 
             <div>
               <div className="flex items-center gap-2 text-6xl font-light tracking-tighter mb-2">
-                {formats.reduce((acc, f) => acc + f.postHistory.length, 0)}
+                {formats.reduce((acc, f) => acc + f.postCount, 0)}
               </div>
               <span className="text-sm font-medium text-premium-text-muted uppercase tracking-wider">Total Posts Ingested</span>
             </div>
