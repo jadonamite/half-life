@@ -36,7 +36,7 @@ export default function Footer() {
             href="/dashboard"
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-transparent border border-white/20 hover:bg-white/10 text-white text-sm font-medium transition-all"
           >
-            <span>Book a free intro call</span>
+            <span>Launch Live Simulator</span>
             <span className="text-white/60">→</span>
           </a>
         </div>
