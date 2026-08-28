@@ -101,7 +101,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              href="#try-it"
+              href="/dashboard"
               className="group relative inline-flex items-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full bg-neutral-950 text-white text-base font-medium shadow-[0_4px_12px_rgba(0,0,0,0.2)] overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]" />

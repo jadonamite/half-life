@@ -6,25 +6,25 @@ export default function Timeline() {
       title: 'Core Problem Formalization',
       pills: ['Strategy', 'Research'],
       description: 'Applied 70-year performance marketing creative-fatigue detection to creator content formats to prevent audience burnout.',
-      image: '/images/case-1.png'
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
     },
     {
       title: 'Decay Engine & Math Suite',
       pills: ['TypeScript', 'Math'],
       description: 'Implemented exponential decay lambda computation, rolling median baselines, and half-life post runway estimation.',
-      image: '/images/case-2.png'
+      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200'
     },
     {
       title: 'Persistent Memory Store',
       pills: ['Database', 'Architecture'],
       description: 'Built cross-session format registry and post history persistence with unprompted alert dispatch queuing.',
-      image: '/images/case-3.png'
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200'
     },
     {
       title: 'Minds Bazaar Integration',
       pills: ['AI', 'Agent'],
       description: 'Authored "Half-Life" skill with format audit, post ingestion, and autonomous proactive fatigue alerting tools.',
-      image: '/images/case-4.png'
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200'
     },
   ];
 

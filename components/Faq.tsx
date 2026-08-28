@@ -55,7 +55,7 @@ export default function Faq() {
             <div className="sticky top-28 rounded-3xl bg-white p-8 sm:p-9 shadow-[0_16px_40px_rgba(0,0,0,0.06)] border border-black/[0.04]">
               <div className="flex items-center gap-4 mb-6">
                 <img
-                  src="/images/avatar-1.jpg"
+                  src="/images/half-life-logo.jpg"
                   alt="Agent Avatar"
                   className="w-14 h-14 rounded-full object-cover ring-2 ring-neutral-200"
                 />
@@ -70,7 +70,7 @@ export default function Faq() {
               </div>
 
               <a
-                href="#try-it"
+                href="/dashboard"
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-neutral-950 text-white text-sm font-medium hover:bg-neutral-800 shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-all"
               >
                 <span>Launch Fatigue Simulator</span>
