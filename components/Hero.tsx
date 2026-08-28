@@ -37,18 +37,18 @@ export default function Hero() {
 
       <div className="mx-auto max-w-[1200px] text-center relative z-10 flex flex-col items-center">
         
-        {/* Unified Font Weights, Tighter Line Height */}
+        {/* Reduced Font Weights, Tighter Line Height */}
         <h1 
-          className="flex flex-col items-center gap-1 sm:gap-2 text-[3.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[7.5rem] tracking-tight text-neutral-900 leading-[1.1] select-none"
+          className="flex flex-col items-center gap-1 sm:gap-2 text-[3.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[7.5rem] tracking-tight leading-[1.1] select-none"
           aria-label="Winning formats have a halflife"
         >
           
           <span aria-hidden="true" className="inline-flex items-center flex-wrap justify-center gap-2 sm:gap-4 md:gap-5">
-            <span className="font-sans font-medium text-neutral-900 tracking-[-0.04em]">
+            <span className="font-sans font-normal text-neutral-900 tracking-[-0.04em]">
               Winning
             </span>
             
-            {/* BLOCK 1: Image Block (3:2.2, Sharp Bevel, Diffuse Shadow) */}
+            {/* BLOCK 1: Image Block (Dashboard Analytics) */}
             <motion.span 
               style={{ y: y1 }}
               whileHover={{ scale: 1.05, rotate: 0 }}
@@ -57,11 +57,11 @@ export default function Hero() {
               className="relative inline-flex items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-[#111] overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.25),0_12px_24px_-8px_rgba(0,0,0,0.15)] ring-1 ring-black z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
             >
               <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_1px_0px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.8)] z-10" />
-              {/* Real image: Clean abstract 3D Data UI from Unsplash */}
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" alt="Data Analytics" />
+              <img src="/images/dashboard-analytics.jpg" className="w-full h-full object-cover" alt="SaaS Analytics Dashboard" />
             </motion.span>
             
-            <span className="font-sans font-medium text-neutral-900 tracking-[-0.04em]">
+            {/* Format is now grey */}
+            <span className="font-sans font-normal text-neutral-400 tracking-[-0.04em]">
               Formats
             </span>
           </span>
@@ -71,7 +71,7 @@ export default function Hero() {
               have a
             </span>
             
-            {/* BLOCK 2: Dark Grey Illustration Block */}
+            {/* BLOCK 2: Dark Grey Illustration Block with Half-Life Logo */}
             <motion.span 
               style={{ y: y2 }}
               whileHover={{ scale: 1.05, rotate: 0 }}
@@ -80,20 +80,21 @@ export default function Hero() {
               className="relative inline-flex items-center justify-center w-[100px] h-[73px] sm:w-[150px] sm:h-[110px] md:w-[180px] md:h-[132px] rounded-[1.25rem] sm:rounded-[2rem] bg-gradient-to-b from-[#2a2a2a] to-[#151515] overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.25),0_12px_24px_-8px_rgba(0,0,0,0.15)] ring-1 ring-black z-20 mx-1 sm:mx-2 cursor-grab active:cursor-grabbing"
             >
               <div className="absolute inset-0 rounded-inherit pointer-events-none shadow-[inset_0_1px_0px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.8)] z-10" />
-              <svg className="w-12 h-6 sm:w-16 sm:h-8 text-[#d4d4d4]" viewBox="0 0 40 16" fill="none">
-                <circle cx="10" cy="8" r="4.5" stroke="currentColor" strokeWidth="2" />
-                <circle cx="30" cy="8" r="4.5" stroke="currentColor" strokeWidth="2" />
-                <path d="M 14.5,8 Q 20,3 25.5,8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              
+              {/* Half-Life SVG Logo in light grey (#d4d4d4) matching the text */}
+              <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[#d4d4d4]" viewBox="0 0 100 100" fill="currentColor">
+                <path fillRule="evenodd" clipRule="evenodd" d="M50 4C24.6 4 4 24.6 4 50C4 75.4 24.6 96 50 96C75.4 96 96 75.4 96 50C96 24.6 75.4 4 50 4ZM50 14C69.9 14 86 30.1 86 50C86 69.9 69.9 86 50 86C30.1 86 14 69.9 14 50C14 30.1 30.1 14 50 14Z" />
+                <path d="M32 24H46L60 66H72V76H52L46 58L30 76H20L38 48Z" />
               </svg>
             </motion.span>
 
-            <span className="font-sans font-medium text-neutral-900 tracking-[-0.04em]">
+            <span className="font-sans font-normal text-neutral-900 tracking-[-0.04em]">
               Halflife
             </span>
           </span>
         </h1>
 
-        <p className="mx-auto mt-10 sm:mt-12 max-w-2xl text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#5c5b66] font-medium tracking-tight">
+        <p className="mx-auto mt-10 sm:mt-12 max-w-2xl text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#5c5b66] font-normal tracking-tight">
           Model exactly when your content formats will decay. Project exponential half-life curves, and alert your team before audience churn hits.
         </p>
 
@@ -102,7 +103,7 @@ export default function Hero() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             href="#try-it"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 sm:px-10 sm:py-5 rounded-full bg-neutral-950 text-white text-base font-semibold shadow-[0_12px_28px_rgba(0,0,0,0.24)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] overflow-hidden transition-shadow"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 sm:px-10 sm:py-5 rounded-full bg-neutral-950 text-white text-base font-medium shadow-[0_12px_28px_rgba(0,0,0,0.24)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] overflow-hidden transition-shadow"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]" />
             <span className="relative z-10">Launch simulator</span>
@@ -122,7 +123,7 @@ export default function Hero() {
                 />
               ))}
             </div>
-            <span className="text-xs sm:text-sm font-semibold text-neutral-500 tracking-tight">
+            <span className="text-xs sm:text-sm font-medium text-neutral-500 tracking-tight">
               Join The Senior Creators
             </span>
           </div>
