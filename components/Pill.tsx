@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import type { ComponentProps, ReactNode } from 'react';
 import { ArrowUpRight } from '@phosphor-icons/react';
