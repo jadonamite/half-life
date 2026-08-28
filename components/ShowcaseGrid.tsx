@@ -1,10 +1,12 @@
+import Link from 'next/link';
+
 export default function ShowcaseGrid() {
   return (
     <section id="work-showcase" className="relative px-4 sm:px-6 py-12 md:py-20 bg-[#f0eff5]">
       <div className="mx-auto max-w-6xl">
         
         {/* Dashboard Teaser Mockup Container */}
-        <div className="relative rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group cursor-pointer" onClick={() => window.location.href = '/dashboard'}>
+        <Link href="/dashboard" className="relative block rounded-[2.5rem] bg-[#111114] border border-black/5 shadow-[0_30px_70px_rgba(0,0,0,0.15)] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group cursor-pointer">
           
           {/* Background Dashboard Mockup Image */}
           <div className="absolute inset-0 w-full h-full">
@@ -35,7 +37,7 @@ export default function ShowcaseGrid() {
             </div>
           </div>
 
-        </div>
+        </Link>
 
       </div>
     </section>
