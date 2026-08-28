@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { 
   SquaresFour, 
   TrendUp, 
-  BellRing, 
+  Bell, 
   Function, 
   ShieldCheck, 
   ArrowsClockwise 
@@ -56,7 +56,7 @@ export default function Problem() {
       color: 'bg-[#00B2FF]',
       y: yBot,
       rotate: -6,
-      icon: <BellRing weight="fill" size={16} className="text-white" />,
+      icon: <Bell weight="fill" size={16} className="text-white" />,
     },
   ];
 
