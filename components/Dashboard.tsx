@@ -59,6 +59,7 @@ const ArcGauge = ({ percentage, color, label, subLabel }: { percentage: number, 
 };
 
 export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [formats, setFormats] = useState<ContentFormat[]>([]);
   const [reports, setReports] = useState<FatigueReport[]>([]);
   const [alerts, setAlerts] = useState<ProactiveAlert[]>([]);
