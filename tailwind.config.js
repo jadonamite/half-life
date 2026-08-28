@@ -21,7 +21,19 @@ export default {
           'button-dark': '#232323',
           accent: '#E66F42', // orange-ish for the chart
           purple: '#673AB7', // purple-ish for chart
-        }
+        },
+        paper: '#F4F5F6',
+        'paper-2': '#EAEBEC',
+        card: '#ECEDEE',
+        'card-raised': '#FFFFFF',
+        ink: '#17171A',
+        'ink-2': '#6E7075',
+        'ink-3': '#A2A5AA',
+        accent: '#1391E2',
+        'accent-2': '#7FC4EF',
+        'accent-3': '#D3E9F9',
+        pill: '#21201E',
+        hairline: '#DFE1E3',
       },
       borderRadius: {
         '3xl': '1.5rem',

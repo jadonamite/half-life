@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { CaretRight, Plus, ArrowsClockwise, Faders, CheckCircle, Warning, Clock, Activity, ChartLineUp, ShieldCheck } from '@phosphor-icons/react';
+import { Plus, ArrowsClockwise, Faders, CheckCircle, Warning, Clock, Lightning, ChartLineUp, ShieldCheck } from '@phosphor-icons/react';
 import { ContentFormat, FatigueReport, ProactiveAlert } from '@/lib/types';
 
 // Mock chart data for the beautiful curve
@@ -108,7 +108,7 @@ export default function Dashboard() {
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-premium-button-dark rounded-xl flex items-center justify-center text-white">
-              <Activity weight="bold" />
+              <Lightning weight="bold" />
             </div>
             <span className="text-lg font-semibold tracking-tight">Halflife</span>
           </div>
@@ -147,7 +147,7 @@ export default function Dashboard() {
               <div className="flex items-center gap-2 text-6xl font-light tracking-tighter mb-2">
                 {reports.length}
                 <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                  <Activity size={16} weight="bold" />
+                  <Lightning size={16} weight="bold" />
                 </div>
               </div>
               <span className="text-sm font-medium text-premium-text-muted uppercase tracking-wider">Formats Tracked</span>
@@ -333,7 +333,7 @@ export default function Dashboard() {
                 <div className="bg-white/70 border border-white rounded-2xl p-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                      <Activity size={16} className="text-gray-600" />
+                      <Lightning size={16} className="text-gray-600" />
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-premium-text-main">Engagements</div>
