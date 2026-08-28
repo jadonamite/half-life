@@ -94,7 +94,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#EBECEE] text-premium-text-main font-sans selection:bg-premium-button-dark selection:text-white p-4 sm:p-8 relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen bg-[#EBECEE] text-premium-text-main font-sans selection:bg-premium-button-dark selection:text-white p-4 sm:p-8 relative overflow-hidden flex justify-center items-start pt-8 sm:pt-12 pb-24">
       
       {/* Background Organic Blurs */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none" />
@@ -102,15 +102,17 @@ export default function Dashboard() {
       <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[90px] pointer-events-none" />
 
       {/* Main Glass Panel */}
-      <div className="w-full max-w-[1400px] bg-premium-glass backdrop-blur-2xl border border-premium-glass-border rounded-[2.5rem] shadow-glass flex flex-col p-8 relative z-10">
+      <div className="w-full max-w-[1400px] mx-auto bg-premium-glass backdrop-blur-2xl border border-premium-glass-border rounded-3xl sm:rounded-[2.5rem] shadow-glass flex flex-col p-5 sm:p-8 relative z-10">
         
         {/* Top Navigation */}
-        <div className="flex justify-between items-center mb-10">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-premium-button-dark rounded-xl flex items-center justify-center text-white">
-              <Lightning weight="bold" />
+        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-10">
+          <div className="flex w-full xl:w-auto justify-between items-center">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-premium-button-dark rounded-xl flex items-center justify-center text-white">
+                <Lightning weight="bold" />
+              </div>
+              <span className="text-lg font-semibold tracking-tight">Halflife</span>
             </div>
-            <span className="text-lg font-semibold tracking-tight">Halflife</span>
           </div>
 
           <div className="hidden md:flex bg-white/50 backdrop-blur-md p-1.5 rounded-full border border-white">
@@ -125,7 +127,7 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto justify-start xl:justify-end">
             <button className="bg-white/60 hover:bg-white p-2.5 rounded-full text-premium-text-main border border-white/80 transition-colors">
               <ArrowsClockwise weight="bold" />
             </button>
