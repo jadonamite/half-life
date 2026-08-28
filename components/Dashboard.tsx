@@ -188,7 +188,7 @@ export default function Dashboard() {
           </h2>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span className="badge badge-minds">Minds Agent: JadonCreator</span>
+          <span className="badge badge-minds">Minds Agent: Halflife</span>
           <span className="badge badge-live">Audience Growth</span>
         </div>
       </div>
@@ -415,7 +415,7 @@ export default function Dashboard() {
               Minds Conversational Terminal
             </h3>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
-              Query JadonCreator directly from persistent format memory
+              Query Halflife directly from persistent format memory
             </span>
           </div>
           <span className="badge badge-minds">Skill: Half-Life</span>
@@ -442,7 +442,7 @@ export default function Dashboard() {
           ))}
           {chatThinking && (
             <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontStyle: 'italic' }}>
-              JadonCreator reading persistent memory...
+              Halflife reading persistent memory...
             </div>
           )}
         </div>
@@ -450,7 +450,7 @@ export default function Dashboard() {
         <form onSubmit={handleChatSend} style={{ display: 'flex', gap: '0.5rem' }}>
           <input
             type="text"
-            placeholder="Ask JadonCreator: 'What is my portfolio decay summary?'"
+            placeholder="Ask Halflife: 'What is my portfolio decay summary?'"
             value={chatQuery}
             onChange={(e) => setChatQuery(e.target.value)}
             className="input-field"

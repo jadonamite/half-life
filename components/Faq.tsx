@@ -28,7 +28,7 @@ export default function Faq() {
     },
     {
       q: 'How does cross-session memory work within Minds AI?',
-      a: 'The Minds Agent (JadonCreator) maintains a persistent format registry. When you talk to the agent in subsequent sessions, it automatically loads your baseline yields, ongoing decay curves, and previous rotation history without requiring you to re-upload data.',
+      a: 'The Minds Agent (Halflife) maintains a persistent format registry. When you talk to the agent in subsequent sessions, it automatically loads your baseline yields, ongoing decay curves, and previous rotation history without requiring you to re-upload data.',
     },
   ];
 
@@ -80,7 +80,7 @@ export default function Faq() {
               <div className="mt-5 text-center">
                 <span className="text-xs text-neutral-500 font-mono">
                   Agent ID:{' '}
-                  <span className="text-accent font-semibold">JadonCreator (Minds)</span>
+                  <span className="text-accent font-semibold">Halflife (Minds)</span>
                 </span>
               </div>
             </div>

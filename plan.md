@@ -12,7 +12,7 @@
 Creator (Chat / Web / Post Ingestion)
    │
    ▼
-Minds Mind (JadonCreator) ── equips ──▶ "Half-Life" Skill ──HTTP──▶ Tool API (Next.js 15)
+Minds Mind (Halflife) ── equips ──▶ "Half-Life" Skill ──HTTP──▶ Tool API (Next.js 15)
    ▲                                                                         │
    │                                                                         ▼
    └─── Proactive Decay Alerts / Plain Narrations ◀─── Trailing Audit ─── [Decay Engine]
@@ -39,7 +39,7 @@ Minds Mind (JadonCreator) ── equips ──▶ "Half-Life" Skill ──HTTP�
 5. `/api/alerts/pending`: Returns unprompted proactive alerts for the Mind to send to the creator.
 
 ### Stream C — Minds Mind Skill & Bazaar Registration
-1. Author **"Half-Life" Skill** for `JadonCreator`.
+1. Author **"Half-Life" Skill** for `Halflife`.
 2. Connect Tool API endpoints to the Skill.
 3. Verify conversational memory, continuity, and autonomous follow-up triggers.
 4. Publish Skill to the **Minds Bazaar**.

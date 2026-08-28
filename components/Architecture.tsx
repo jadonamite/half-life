@@ -17,7 +17,7 @@ export default function Architecture() {
       title: 'Real State, Zero Hallucinations',
       quote:
         'The Minds Agent queries persistent format memory across sessions. It recalls your historical baselines, previous fatigue alerts, and past rotations without re-teaching.',
-      rule: 'Minds Native Integration: JadonCreator cross-session state.',
+      rule: 'Minds Native Integration: Halflife cross-session state.',
       avatar: '/images/avatar-2.jpg',
       author: 'Minds Bazaar Agent',
       role: 'Autonomous AI Integration',

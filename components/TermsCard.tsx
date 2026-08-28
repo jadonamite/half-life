@@ -70,7 +70,7 @@ export default function TermsCard() {
             <div className="text-xs text-neutral-500 font-mono text-center sm:text-left">
               Minds Persistent Agent:{' '}
               <span className="text-neutral-800 font-medium select-all">
-                JadonCreator (f16e513e-f36b)
+                Halflife (9be7513e-f36b)
               </span>
             </div>
 

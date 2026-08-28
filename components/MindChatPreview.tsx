@@ -90,7 +90,7 @@ export function MindChatPreview({ reports }: Props) {
           <h2 className="text-xl font-serif text-ink mt-0.5">Conversational Mind Narration</h2>
         </div>
         <span className="text-xs font-mono text-success bg-success/10 px-2.5 py-1 rounded-full border border-success/30">
-          ● Agent Online: JadonCreator
+          ● Agent Online: Halflife
         </span>
       </div>
 
@@ -103,7 +103,7 @@ export function MindChatPreview({ reports }: Props) {
             }`}
           >
             <div className="flex items-center gap-1.5 mb-1 text-[11px] font-mono text-muted">
-              <span>{m.sender === 'user' ? 'You' : 'JadonCreator (Mind)'}</span>
+              <span>{m.sender === 'user' ? 'You' : 'Halflife (Mind)'}</span>
               <span>•</span>
               <span>{m.time}</span>
             </div>
@@ -122,7 +122,7 @@ export function MindChatPreview({ reports }: Props) {
         {thinking && (
           <div className="flex items-center gap-2 text-xs font-mono text-muted">
             <span className="animate-spin">⏳</span>
-            <span>JadonCreator reading cross-session format memory...</span>
+            <span>Halflife reading cross-session format memory...</span>
           </div>
         )}
       </div>
@@ -130,7 +130,7 @@ export function MindChatPreview({ reports }: Props) {
       <form onSubmit={handleSend} className="mt-6 flex gap-2">
         <input
           type="text"
-          placeholder="Ask JadonCreator: 'What is my current portfolio health?'"
+          placeholder="Ask Halflife: 'What is my current portfolio health?'"
           value={inputQuery}
           onChange={(e) => setInputQuery(e.target.value)}
           className="flex-1 rounded-xl bg-surface border border-border px-4 py-2.5 text-sm text-ink placeholder:text-muted/50 focus:border-accent focus:outline-none"

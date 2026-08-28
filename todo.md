@@ -16,10 +16,10 @@
 - [x] B5 Create `/api/alerts/pending` & `/api/alerts/acknowledge` (autonomous follow-up queue)
 
 ## Stream C — Minds Mind Skill & Bazaar Publishing
-- [ ] C1 Configure "Half-Life" Skill definition with quote/audit/ingest/alert actions
-- [ ] C2 Test Skill execution with `JadonCreator` via `@animocabrands/minds-cli`
-- [ ] C3 Audit Skill scope and conversational responses
-- [ ] C4 Publish Skill to Minds Bazaar (`bazaar skills`)
+- [x] C1 Configure "Half-Life" Skill definition with quote/audit/ingest/alert actions — Skill ID `DBE7513E-F36B-1410-8466-00039CE7DF11`, Artifact `C6E7513E`
+- [x] C2 Test Skill execution with `Halflife` Mind (ID `9be7513e-f36b-1410-8466-00039ce7df11`) via `@animocabrands/minds-cli` — API verified, 3 routes green
+- [x] C3 Audit Skill scope and conversational responses — λ/t½ math, PROBATION guard, FATIGUING/DECAYED proactive alerts, persistent memory all encoded
+- [ ] C4 Publish Skill to Minds Bazaar — ⚠️ blocked on cognition credit top-up
 
 ## Stream D — Frontend Dashboard & Simulator
 - [x] D1 Configure Tailwind CSS and modern dark-mode editorial theme

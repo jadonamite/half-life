@@ -4,7 +4,7 @@
 
 [![Live Web App](https://img.shields.io/badge/Live_App-half--life--sable.vercel.app-00f2fe?logo=vercel)](https://half-life-sable.vercel.app)
 [![Hackathon Track](https://img.shields.io/badge/Track-Audience_Growth_&_Engagement-00f2fe)](https://dorahacks.io/hackathon/creativeminds/details)
-[![Minds Agent](https://img.shields.io/badge/Minds_Agent-JadonCreator-blue)](https://hellominds.ai)
+[![Minds Agent](https://img.shields.io/badge/Minds_Agent-Halflife-blue)](https://hellominds.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -15,7 +15,7 @@ Every creator eventually finds a winning content format—a specific hook struct
 
 In performance marketing, multi-billion-dollar ad platforms (Meta, Google, TikTok) continuously monitor creative decay, calculate half-life curves, and rotate creatives before ROI collapses. Content creators have never had this capability. Instead, they repeat a decaying format for months, watch reach dwindle, blame "the algorithm," and burn out.
 
-**Half-Life** equips a creator's **Minds Agent** (`JadonCreator`) with a persistent creative fatigue detection engine that:
+**Half-Life** equips a creator's **Minds Agent** (`Halflife`) with a persistent creative fatigue detection engine that:
 1. **Remembers Format Histories (Memory):** Retains format baselines, archetypes, and post engagement metrics across sessions.
 2. **Models Longitudinal Decay (Continuity):** Calculates the format's baseline engagement, exponential decay constant ($\lambda$), and half-life ($t_{1/2}$).
 3. **Proactively Alerts (Autonomous Follow-Up):** Unprompted, warns the creator when a format enters terminal decay ($>35\%$ drop below baseline over trailing window) and recommends fresh rotation formats before audience churn hits.
@@ -28,7 +28,7 @@ In performance marketing, multi-billion-dollar ad platforms (Meta, Google, TikTo
 Creator (Chat / Ingestion / Web)
    │
    ▼
-Minds Mind (JadonCreator) ── equips ──▶ "Half-Life" Skill ──HTTP──▶ Tool API (Next.js 15)
+Minds Mind (Halflife) ── equips ──▶ "Half-Life" Skill ──HTTP──▶ Tool API (Next.js 15)
    ▲                                                                         │
    │                                                                         ▼
    └─── Proactive Decay Alerts / Plain Narrations ◀─── Trailing Audit ─── [Decay Engine]

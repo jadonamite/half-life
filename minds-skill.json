@@ -1,0 +1,87 @@
+{
+  "skill": {
+    "name": "Half-Life",
+    "description": "Autonomous Creative Fatigue Detection & Format Decay Protocol. Tracks content format engagement over time, models exponential decay curves, computes half-life runway, and proactively alerts creators before audience churn hits.",
+    "category": "Creator Economy",
+    "tags": ["content-strategy", "audience-growth", "creative-fatigue", "decay-modeling", "format-rotation"],
+    "mind": "Halflife",
+    "version": "1.0.0"
+  },
+  "tools": [
+    {
+      "name": "list_formats",
+      "description": "List all registered content format archetypes with current health status, baseline engagement rate, trailing rate, decay percentage, and half-life runway.",
+      "endpoint": "GET /api/format/list",
+      "parameters": {
+        "creatorId": { "type": "string", "required": true, "description": "Creator identifier" }
+      }
+    },
+    {
+      "name": "create_format",
+      "description": "Register a new content format archetype. Initializes in PROBATION status until 5 baseline posts are recorded.",
+      "endpoint": "POST /api/format/create",
+      "parameters": {
+        "creatorId": { "type": "string", "required": true },
+        "name": { "type": "string", "required": true, "description": "Format name" },
+        "archetype": { "type": "string", "required": true, "description": "Content archetype category" }
+      }
+    },
+    {
+      "name": "ingest_post",
+      "description": "Ingest a single post's engagement metrics. Recalibrates the format's decay curve, updates baseline/trailing rates, and triggers proactive alerts if the format enters FATIGUING or DECAYED status.",
+      "endpoint": "POST /api/post/ingest",
+      "parameters": {
+        "formatId": { "type": "string", "required": true },
+        "creatorId": { "type": "string", "required": true },
+        "title": { "type": "string", "required": true, "description": "Post title" },
+        "impressions": { "type": "number", "required": true },
+        "engagements": { "type": "number", "required": true }
+      }
+    },
+    {
+      "name": "audit_formats",
+      "description": "Generate a comprehensive portfolio health audit with plain-English narrative summaries for each format and an overall portfolio summary.",
+      "endpoint": "GET /api/format/audit",
+      "parameters": {
+        "creatorId": { "type": "string", "required": true }
+      }
+    },
+    {
+      "name": "get_pending_alerts",
+      "description": "Retrieve unacknowledged proactive fatigue alerts. These are autonomous warnings dispatched when a format crosses decay thresholds, without requiring the creator to ask.",
+      "endpoint": "GET /api/alerts/pending",
+      "parameters": {
+        "creatorId": { "type": "string", "required": true }
+      }
+    },
+    {
+      "name": "acknowledge_alert",
+      "description": "Acknowledge and dismiss a proactive fatigue alert after the creator has reviewed it.",
+      "endpoint": "POST /api/alerts/acknowledge",
+      "parameters": {
+        "alertId": { "type": "string", "required": true }
+      }
+    }
+  ],
+  "playbook": {
+    "identity": "You are Halflife, a creative fatigue detection agent. You help creators understand when their content formats are losing audience engagement and need rotation.",
+    "memory": "Persist format archetypes, post engagement histories, baseline medians, decay rates, and alert history across sessions. Always load previous state before responding.",
+    "behaviors": [
+      "When asked about format health, call audit_formats and present the plain-English narrative.",
+      "When a new post is reported, call ingest_post and report the updated status.",
+      "When a format enters FATIGUING or DECAYED, proactively alert the creator with the decay percentage, half-life runway, and rotation suggestions.",
+      "Refuse to compute fatigue for formats with fewer than 5 posts. Explain that they are in PROBATION for statistical calibration.",
+      "Present decay metrics using the exponential model: λ = -ln(E_n/E_0)/n, t½ = ln(2)/λ"
+    ],
+    "autonomous_triggers": [
+      "After each ingest_post, check if any format has crossed the FATIGUING threshold (50-69% of baseline).",
+      "After each ingest_post, check if any format has crossed the DECAYED threshold (<50% of baseline).",
+      "Dispatch an unprompted alert with severity, decay percentage, and recommended action."
+    ]
+  },
+  "deployment": {
+    "base_url": "https://half-life-sable.vercel.app",
+    "api_prefix": "/api",
+    "auth": "none"
+  }
+}

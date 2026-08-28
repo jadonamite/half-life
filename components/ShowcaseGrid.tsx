@@ -147,7 +147,7 @@ export default function ShowcaseGrid() {
                   <div className="bg-[#121217] rounded-xl p-3.5 border border-cyan-500/20 mb-3 space-y-2">
                     <div className="flex items-center gap-2 text-xs font-mono text-cyan-300">
                       <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                      <span>JadonCreator (Persistent Mind)</span>
+                      <span>Halflife (Persistent Mind)</span>
                     </div>
                     <p className="text-xs text-neutral-300 leading-relaxed font-mono">
                       &ldquo;⚠️ Fatigue Alert: &apos;Quick Hot Takes&apos; has dropped 41.5% below your 6.5% baseline. Recommend immediate 30-day rotation into &apos;System Architecture Teardowns&apos;.&rdquo;
