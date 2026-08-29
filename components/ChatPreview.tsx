@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Lightning, PaperPlaneRight } from '@phosphor-icons/react';
+import { PillButton } from '@/components/Pill';
 
 export default function ChatPreview() {
   const [messages, setMessages] = useState([
@@ -84,9 +85,7 @@ export default function ChatPreview() {
           placeholder="Ask Halflife for an audit..."
           className="flex-1 bg-white/80 border border-white rounded-full px-5 py-3 text-sm text-ink outline-none focus:border-accent transition-colors shadow-inner"
         />
-        <button type="submit" disabled={thinking} className="bg-ink text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-black transition-colors shadow-sm disabled:opacity-50">
-          <PaperPlaneRight weight="fill" />
-        </button>
+        <PillButton type="submit" disabled={thinking} mark={<PaperPlaneRight weight="fill" />}>Send</PillButton>
       </form>
     </div>
   );

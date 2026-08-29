@@ -200,15 +200,9 @@ export default function Dashboard() {
           </nav>
 
           <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto justify-start xl:justify-end">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-white/50 transition-colors">
-              <ArrowsClockwise weight="bold" /> Sync
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-white/50 transition-colors">
-              <Faders weight="bold" /> Filter
-            </button>
-            <button onClick={() => setIsInjectModalOpen(true)} className="flex items-center gap-2 h-[36px] bg-ink text-white px-5 rounded-full text-sm font-medium hover:bg-black transition-colors shadow-sm">
-              <Plus weight="bold" /> Inject Post
-            </button>
+            <PillButton variant="ghost" mark={<ArrowsClockwise weight="bold" />}>Sync</PillButton>
+            <PillButton variant="ghost" mark={<Faders weight="bold" />}>Filter</PillButton>
+            <PillButton onClick={() => setIsInjectModalOpen(true)} mark={<Plus weight="bold" />}>Inject Post</PillButton>
           </div>
         </div>
 
@@ -365,12 +359,8 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-white border border-gray-200 text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-gray-50 flex items-center justify-center gap-2">
-                    <ArrowsClockwise size={14} weight="bold" /> Recalibrate
-                  </button>
-                  <button className="bg-premium-button-dark text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm flex items-center justify-center gap-2">
-                    <ShieldCheck size={14} weight="bold" /> Rotate
-                  </button>
+                  <PillButton variant="ghost" className="!h-10 !text-xs w-full" mark={<ArrowsClockwise weight="bold" />}>Recalibrate</PillButton>
+                  <PillButton className="!h-10 !text-xs w-full" mark={<ShieldCheck weight="bold" />}>Rotate</PillButton>
                 </div>
               </div>
 
@@ -406,9 +396,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <button className="w-full mt-6 bg-premium-button-dark text-white rounded-full py-3 text-sm font-medium hover:bg-black transition-colors flex justify-center items-center gap-2 shadow-float">
-                  <Plus weight="bold" /> Run Engine Audit
-                </button>
+                <PillButton className="w-full mt-6" mark={<Plus weight="bold" />}>Run Engine Audit</PillButton>
               </div>
 
             </div>
@@ -422,9 +410,7 @@ export default function Dashboard() {
                 <h2 className="text-2xl font-medium tracking-tight mb-2">Registered Formats</h2>
                 <p className="text-premium-text-muted">Manage your content archetypes and view their high-level decay trajectories.</p>
               </div>
-              <button className="flex items-center gap-2 h-[40px] bg-ink text-white px-5 rounded-full text-sm font-medium hover:bg-black transition-colors shadow-sm">
-                <Plus weight="bold" /> New Format
-              </button>
+              <PillButton mark={<Plus weight="bold" />}>New Format</PillButton>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -477,9 +463,9 @@ export default function Dashboard() {
                 <p className="text-premium-text-muted">Real-time ingestion feed and decay calculation traces.</p>
               </div>
               <div className="flex gap-2">
-                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-black text-white">All Logs</button>
-                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-600 hover:bg-gray-50">Warnings</button>
-                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-600 hover:bg-gray-50">Ingestion</button>
+                 <PillButton variant="plain" className="bg-ink text-white">All Logs</PillButton>
+                 <PillButton variant="ghost" className="!h-auto !py-1.5 !px-4">Warnings</PillButton>
+                 <PillButton variant="ghost" className="!h-auto !py-1.5 !px-4">Ingestion</PillButton>
               </div>
             </div>
 
@@ -545,12 +531,8 @@ export default function Dashboard() {
                   hl_live_***********************************9f2a
                   <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
                 </div>
-                <button className="bg-white border border-gray-200 p-3 rounded-xl hover:bg-gray-50 transition-colors shadow-sm text-premium-text-main">
-                  Copy
-                </button>
-                <button className="bg-premium-button-dark text-white px-5 py-3 rounded-xl font-medium shadow-sm hover:bg-black transition-colors whitespace-nowrap">
-                  Roll Key
-                </button>
+                <PillButton variant="ghost">Copy</PillButton>
+                <PillButton>Roll Key</PillButton>
               </div>
             </div>
 
@@ -564,9 +546,7 @@ export default function Dashboard() {
                   className="flex-1 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-premium-button-dark"
                   defaultValue="https://api.namite.xyz/webhooks/halflife"
                 />
-                <button className="bg-white border border-gray-200 px-5 py-3 rounded-xl font-medium hover:bg-gray-50 transition-colors shadow-sm">
-                  Save
-                </button>
+                <PillButton variant="ghost">Save</PillButton>
               </div>
             </div>
           </div>
