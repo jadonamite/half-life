@@ -468,8 +468,6 @@ export default function Dashboard() {
             </div>
           </div>
         )}
-          </div>
-        )}
 
         {activeTab === 'logs' && (
           <div className="space-y-6">
