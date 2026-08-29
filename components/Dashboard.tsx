@@ -416,48 +416,108 @@ export default function Dashboard() {
         )}
 
         {activeTab === 'formats' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {formats.map(f => (
-              <div key={f.id} className="bg-white/40 border border-white/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="text-lg font-medium text-premium-text-main">{f.name}</h4>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${f.status === 'HEALTHY' ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-600'}`}>
-                      {f.status}
-                    </span>
-                  </div>
-                  <p className="text-sm text-premium-text-muted mb-6">{f.description}</p>
-                </div>
-                <div className="flex justify-between items-end border-t border-white/50 pt-4">
-                  <div>
-                    <div className="text-2xl font-light">{f.postCount}</div>
-                    <div className="text-[10px] text-premium-text-muted uppercase">Posts Analyzed</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-light text-premium-text-main">{(f.baselineEngagementRate * 100).toFixed(1)}%</div>
-                    <div className="text-[10px] text-premium-text-muted uppercase">Baseline Retention</div>
-                  </div>
-                </div>
+          <div className="space-y-8">
+            <div className="flex justify-between items-end">
+              <div>
+                <h2 className="text-2xl font-medium tracking-tight mb-2">Registered Formats</h2>
+                <p className="text-premium-text-muted">Manage your content archetypes and view their high-level decay trajectories.</p>
               </div>
-            ))}
+              <button className="flex items-center gap-2 h-[40px] bg-ink text-white px-5 rounded-full text-sm font-medium hover:bg-black transition-colors shadow-sm">
+                <Plus weight="bold" /> New Format
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { name: 'System Architecture Teardowns', status: 'HEALTHY', desc: 'Deep-dive text threads breaking down complex systems.', posts: 18, baseline: '4.2%', retention: '92%', runway: '24+ Posts' },
+                { name: '1-Sentence Hot Takes', status: 'FATIGUED', desc: 'High-variance engagement bait statements.', posts: 8, baseline: '6.5%', retention: '41%', runway: '~3 Posts' },
+                { name: '30s Podcast Video Snippets', status: 'CALIBRATING', desc: 'Short form vertical video clips from long-form.', posts: 3, baseline: 'N/A', retention: 'N/A', runway: 'Hold (N<5)' },
+                { name: 'Tooling & Workflow Tips', status: 'HEALTHY', desc: 'Practical setup and productivity guides.', posts: 12, baseline: '3.8%', retention: '88%', runway: '15+ Posts' },
+                { name: 'Weekly Newsletter Teaser', status: 'WARNING', desc: 'Top-of-funnel conversion posts for the newsletter.', posts: 24, baseline: '2.1%', retention: '65%', runway: '~8 Posts' },
+              ].map((f, i) => (
+                <div key={i} className="bg-white/60 backdrop-blur-md border border-white/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group cursor-pointer relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-transparent to-white/20 group-hover:to-white/40 rounded-full blur-2xl transition-all" />
+                  
+                  <div>
+                    <div className="flex justify-between items-start mb-4 relative z-10">
+                      <h4 className="text-lg font-medium text-premium-text-main leading-tight pr-4">{f.name}</h4>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shrink-0 ${f.status === 'HEALTHY' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/50' : f.status === 'FATIGUED' ? 'bg-red-50 text-red-700 border border-red-200/50' : f.status === 'WARNING' ? 'bg-amber-50 text-amber-700 border border-amber-200/50' : 'bg-neutral-100 text-neutral-600 border border-neutral-200'}`}>
+                        {f.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-premium-text-muted mb-8 relative z-10">{f.desc}</p>
+                  </div>
+                  
+                  <div className="flex justify-between items-end border-t border-black/5 pt-5 relative z-10">
+                    <div>
+                      <div className="text-2xl font-light text-premium-text-main">{f.posts}</div>
+                      <div className="text-[10px] text-premium-text-muted font-mono uppercase tracking-wider">Posts</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-light text-premium-text-main">{f.retention}</div>
+                      <div className="text-[10px] text-premium-text-muted font-mono uppercase tracking-wider">Retention</div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-black/5 flex items-center justify-between relative z-10">
+                     <span className="text-xs text-premium-text-muted">Runway Projection:</span>
+                     <span className={`text-sm font-semibold ${f.status === 'FATIGUED' ? 'text-red-600' : 'text-premium-text-main'}`}>{f.runway}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
           </div>
         )}
 
         {activeTab === 'logs' && (
-          <div className="bg-[#1C1C1D] rounded-3xl p-6 font-mono text-sm shadow-dark overflow-hidden h-[600px] flex flex-col">
-            <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#2e2e36]">
-              <div className="text-white flex items-center gap-3">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" /> Engine Live Feed
+          <div className="space-y-6">
+            <div className="flex justify-between items-end mb-4">
+              <div>
+                <h2 className="text-2xl font-medium tracking-tight mb-2">Engine Logs</h2>
+                <p className="text-premium-text-muted">Real-time ingestion feed and decay calculation traces.</p>
               </div>
-              <button className="text-[#a2a5aa] hover:text-white transition-colors">Clear</button>
+              <div className="flex gap-2">
+                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-black text-white">All Logs</button>
+                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-600 hover:bg-gray-50">Warnings</button>
+                 <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-600 hover:bg-gray-50">Ingestion</button>
+              </div>
             </div>
-            <div className="flex-1 overflow-y-auto space-y-4 pr-2">
-              <div className="text-[#a2a5aa]">&gt; [15:02:44] Polling APIs for new content from jadonamite...</div>
-              <div className="text-emerald-400">&gt; [15:02:45] Found 1 new post matching format ID "hot_takes_1"</div>
-              <div className="text-[#a2a5aa]">&gt; [15:02:45] Ingesting metrics... Impressions: 12,400 | Engagements: 210</div>
-              <div className="text-amber-400">&gt; [15:02:46] Calculating decay... Engagement Rate 1.69% (Baseline 3.2%)</div>
-              <div className="text-orange-500">&gt; [15:02:46] WARNING: Decay curve steepening. Adjusting half-life projection to 3 posts.</div>
-              <div className="text-[#a2a5aa]">&gt; [15:02:47] Persisting to memory vector store... Done.</div>
+
+            <div className="bg-[#0B0B0E] rounded-3xl p-6 font-mono text-sm shadow-2xl overflow-hidden h-[600px] flex flex-col border border-white/10 relative">
+              
+              {/* Terminal Header */}
+              <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
+                <div className="text-white/80 flex items-center gap-3">
+                  <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" /> 
+                  <span className="font-semibold tracking-wider text-xs">HALFLIFE ENGINE &middot; CORE DUMP</span>
+                </div>
+                <div className="flex gap-4 text-[10px] text-white/40 uppercase tracking-widest">
+                  <span>Uptime: 24d 14h</span>
+                  <span>CPU: 4%</span>
+                  <button className="hover:text-white transition-colors">Clear</button>
+                </div>
+              </div>
+              
+              {/* Terminal Logs */}
+              <div className="flex-1 overflow-y-auto space-y-3 pr-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:44.102</span> <span>[SYSTEM] Polling connected social APIs for new content from jadoncreator...</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:45.891</span> <span className="text-cyan-400">[INGEST] Found 1 new post matching format ID "hot_takes_1"</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:45.920</span> <span>[METRICS] Extracting 24h performance: Impressions: 12,400 | Engagements: 210 | Saves: 45</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.005</span> <span>[MATH] Calculating decay delta...</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.012</span> <span className="text-white">Engagement Rate: 1.69% (Baseline: 3.20%)</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.104</span> <span className="text-amber-400">[WARNING] Decay curve steeply accelerating. &lambda; = 0.16.</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.110</span> <span className="text-red-400 font-bold">[ALERT] Adjusting half-life projection to ~3 posts remaining.</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.300</span> <span>[STATE] Persisting updated matrix to format registry...</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.350</span> <span className="text-emerald-400">[SUCCESS] State saved. Queuing proactive notification to Minds Bazaar Agent.</span></div>
+                
+                <div className="text-white/40 flex gap-4 mt-6"><span className="shrink-0 text-white/20">15:10:00.001</span> <span>[SYSTEM] Running scheduled probabilistic audit on all active formats...</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:10:00.045</span> <span>[AUDIT] "System Architecture Teardowns" maintaining robust retention (92%). &lambda; = 0.02.</span></div>
+                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:10:00.080</span> <span>[AUDIT] "30s Podcast Video Snippets" N=3. Holding in calibration lock.</span></div>
+                
+                <div className="text-white/40 flex gap-4 mt-6 animate-pulse"><span className="shrink-0 text-white/20">15:14:22.999</span> <span className="text-white/80">_</span></div>
+              </div>
             </div>
           </div>
         )}
