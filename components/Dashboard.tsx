@@ -7,6 +7,7 @@ import { ContentFormat, FatigueReport, ProactiveAlert } from '@/lib/types';
 import { Wordmark } from '@/components/Wordmark';
 import { PillButton } from '@/components/Pill';
 import ChatPreview from '@/components/ChatPreview';
+import InjectPostModal from '@/components/InjectPostModal';
 
 // Mock chart data for the beautiful curve
 const chartData = [
@@ -60,6 +61,7 @@ const ArcGauge = ({ percentage, color, label, subLabel }: { percentage: number, 
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [isInjectModalOpen, setIsInjectModalOpen] = useState(false);
   const [formats, setFormats] = useState<ContentFormat[]>([]);
   const [reports, setReports] = useState<FatigueReport[]>([]);
   const [alerts, setAlerts] = useState<ProactiveAlert[]>([]);
@@ -204,9 +206,9 @@ export default function Dashboard() {
             <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm font-medium hover:bg-white/50 transition-colors">
               <Faders weight="bold" /> Filter
             </button>
-            <PillButton mark={<Plus weight="bold" />} className="!h-[36px] !text-sm">
-              Inject Post
-            </PillButton>
+            <button onClick={() => setIsInjectModalOpen(true)} className="flex items-center gap-2 h-[36px] bg-ink text-white px-5 rounded-full text-sm font-medium hover:bg-black transition-colors shadow-sm">
+              <Plus weight="bold" /> Inject Post
+            </button>
           </div>
         </div>
 
@@ -551,6 +553,9 @@ export default function Dashboard() {
           </div>
         </footer>
       </div>
+      
+      {/* Modals */}
+      <InjectPostModal isOpen={isInjectModalOpen} onClose={() => setIsInjectModalOpen(false)} />
     </div>
   );
 }
