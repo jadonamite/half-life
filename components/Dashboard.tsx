@@ -414,40 +414,36 @@ export default function Dashboard() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { name: 'System Architecture Teardowns', status: 'HEALTHY', desc: 'Deep-dive text threads breaking down complex systems.', posts: 18, baseline: '4.2%', retention: '92%', runway: '24+ Posts' },
-                { name: '1-Sentence Hot Takes', status: 'FATIGUED', desc: 'High-variance engagement bait statements.', posts: 8, baseline: '6.5%', retention: '41%', runway: '~3 Posts' },
-                { name: '30s Podcast Video Snippets', status: 'CALIBRATING', desc: 'Short form vertical video clips from long-form.', posts: 3, baseline: 'N/A', retention: 'N/A', runway: 'Hold (N<5)' },
-                { name: 'Tooling & Workflow Tips', status: 'HEALTHY', desc: 'Practical setup and productivity guides.', posts: 12, baseline: '3.8%', retention: '88%', runway: '15+ Posts' },
-                { name: 'Weekly Newsletter Teaser', status: 'WARNING', desc: 'Top-of-funnel conversion posts for the newsletter.', posts: 24, baseline: '2.1%', retention: '65%', runway: '~8 Posts' },
-              ].map((f, i) => (
-                <div key={i} className="bg-white/60 backdrop-blur-md border border-white/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group cursor-pointer relative overflow-hidden">
+              {formats.map((f) => (
+                <div key={f.id} className="bg-white/60 backdrop-blur-md border border-white/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group cursor-pointer relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-transparent to-white/20 group-hover:to-white/40 rounded-full blur-2xl transition-all" />
                   
                   <div>
                     <div className="flex justify-between items-start mb-4 relative z-10">
                       <h4 className="text-lg font-medium text-premium-text-main leading-tight pr-4">{f.name}</h4>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shrink-0 ${f.status === 'HEALTHY' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/50' : f.status === 'FATIGUED' ? 'bg-red-50 text-red-700 border border-red-200/50' : f.status === 'WARNING' ? 'bg-amber-50 text-amber-700 border border-amber-200/50' : 'bg-neutral-100 text-neutral-600 border border-neutral-200'}`}>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shrink-0 ${f.status === 'HEALTHY' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/50' : f.status === 'FATIGUING' ? 'bg-red-50 text-red-700 border border-red-200/50' : f.status === 'WARNING' ? 'bg-amber-50 text-amber-700 border border-amber-200/50' : 'bg-neutral-100 text-neutral-600 border border-neutral-200'}`}>
                         {f.status}
                       </span>
                     </div>
-                    <p className="text-sm text-premium-text-muted mb-8 relative z-10">{f.desc}</p>
+                    <p className="text-sm text-premium-text-muted mb-8 relative z-10">{f.description}</p>
                   </div>
                   
                   <div className="flex justify-between items-end border-t border-black/5 pt-5 relative z-10">
                     <div>
-                      <div className="text-2xl font-light text-premium-text-main">{f.posts}</div>
+                      <div className="text-2xl font-light text-premium-text-main">{f.postCount}</div>
                       <div className="text-[10px] text-premium-text-muted font-mono uppercase tracking-wider">Posts</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-light text-premium-text-main">{f.retention}</div>
-                      <div className="text-[10px] text-premium-text-muted font-mono uppercase tracking-wider">Retention</div>
+                      <div className="text-2xl font-light text-premium-text-main">{(f.baselineEngagementRate * 100).toFixed(1)}%</div>
+                      <div className="text-[10px] text-premium-text-muted font-mono uppercase tracking-wider">Baseline</div>
                     </div>
                   </div>
                   
                   <div className="mt-4 pt-4 border-t border-black/5 flex items-center justify-between relative z-10">
                      <span className="text-xs text-premium-text-muted">Runway Projection:</span>
-                     <span className={`text-sm font-semibold ${f.status === 'FATIGUED' ? 'text-red-600' : 'text-premium-text-main'}`}>{f.runway}</span>
+                     <span className={`text-sm font-semibold ${f.status === 'FATIGUING' ? 'text-red-600' : 'text-premium-text-main'}`}>
+                       {f.halfLifePostsRemaining !== null ? `~${f.halfLifePostsRemaining} Posts` : 'N/A'}
+                     </span>
                   </div>
                 </div>
               ))}
@@ -475,7 +471,7 @@ export default function Dashboard() {
               <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
                 <div className="text-white/80 flex items-center gap-3">
                   <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" /> 
-                  <span className="font-semibold tracking-wider text-xs">HALFLIFE ENGINE &middot; CORE DUMP</span>
+                  <span className="font-semibold tracking-wider text-xs">HALFLIFE ENGINE &middot; LIVE DUMP</span>
                 </div>
                 <div className="flex gap-4 text-[10px] text-white/40 uppercase tracking-widest">
                   <span>Uptime: 24d 14h</span>
@@ -486,21 +482,30 @@ export default function Dashboard() {
               
               {/* Terminal Logs */}
               <div className="flex-1 overflow-y-auto space-y-3 pr-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:44.102</span> <span>[SYSTEM] Polling connected social APIs for new content from jadoncreator...</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:45.891</span> <span className="text-cyan-400">[INGEST] Found 1 new post matching format ID "hot_takes_1"</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:45.920</span> <span>[METRICS] Extracting 24h performance: Impressions: 12,400 | Engagements: 210 | Saves: 45</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.005</span> <span>[MATH] Calculating decay delta...</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.012</span> <span className="text-white">Engagement Rate: 1.69% (Baseline: 3.20%)</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.104</span> <span className="text-amber-400">[WARNING] Decay curve steeply accelerating. &lambda; = 0.16.</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.110</span> <span className="text-red-400 font-bold">[ALERT] Adjusting half-life projection to ~3 posts remaining.</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.300</span> <span>[STATE] Persisting updated matrix to format registry...</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:02:46.350</span> <span className="text-emerald-400">[SUCCESS] State saved. Queuing proactive notification to Minds Bazaar Agent.</span></div>
+                {reports.map((report, idx) => (
+                  <div key={idx} className="animate-in fade-in slide-in-from-bottom-2 duration-500 mb-6">
+                    <div className="text-white/40 flex gap-4">
+                      <span className="shrink-0 text-white/20">{new Date(report.lastEvaluatedAt || Date.now()).toLocaleTimeString()}</span> 
+                      <span className="text-cyan-400">[AUDIT] Evaluating format "{formats.find(f => f.id === report.formatId)?.name || report.formatId}"</span>
+                    </div>
+                    <div className="text-white/40 flex gap-4 mt-1">
+                      <span className="shrink-0 text-white/20 opacity-0">00:00:00 AM</span> 
+                      <span className="text-white">Engagement Rate: {(report.currentEngagementRate * 100).toFixed(2)}% (Baseline: {(report.baselineRate * 100).toFixed(2)}%)</span>
+                    </div>
+                    <div className="text-white/40 flex gap-4 mt-1">
+                      <span className="shrink-0 text-white/20 opacity-0">00:00:00 AM</span> 
+                      <span className={report.status === 'FATIGUING' ? 'text-red-400' : 'text-emerald-400'}>
+                        [STATUS] {report.status} (Decay: {report.decayPercentage > 0 ? '+' : ''}{report.decayPercentage}%)
+                      </span>
+                    </div>
+                    <div className="text-white/40 flex gap-4 mt-1">
+                      <span className="shrink-0 text-white/20 opacity-0">00:00:00 AM</span> 
+                      <span className="text-white/50">Runway: {report.halfLifePosts !== null ? `~${report.halfLifePosts} posts remaining` : 'Stable'}</span>
+                    </div>
+                  </div>
+                ))}
                 
-                <div className="text-white/40 flex gap-4 mt-6"><span className="shrink-0 text-white/20">15:10:00.001</span> <span>[SYSTEM] Running scheduled probabilistic audit on all active formats...</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:10:00.045</span> <span>[AUDIT] "System Architecture Teardowns" maintaining robust retention (92%). &lambda; = 0.02.</span></div>
-                <div className="text-white/40 flex gap-4"><span className="shrink-0 text-white/20">15:10:00.080</span> <span>[AUDIT] "30s Podcast Video Snippets" N=3. Holding in calibration lock.</span></div>
-                
-                <div className="text-white/40 flex gap-4 mt-6 animate-pulse"><span className="shrink-0 text-white/20">15:14:22.999</span> <span className="text-white/80">_</span></div>
+                <div className="text-white/40 flex gap-4 mt-6 animate-pulse"><span className="shrink-0 text-white/20">{new Date().toLocaleTimeString()}</span> <span className="text-white/80">Waiting for incoming webhooks..._</span></div>
               </div>
             </div>
           </div>
